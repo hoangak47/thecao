@@ -229,8 +229,8 @@ const Rate = () => (
             src={item.img}
             alt={item.title}
             className="object-contain aspect-square my-6 invert"
-            width={500}
-            height={500}
+            width={100}
+            height={100}
           />
           <div className="flex items-center justify-center flex-1 mt-3">
             <h2 className="text-center text-4xl font-medium mt-1 uppercase text-[--color-primary] mb-6">
