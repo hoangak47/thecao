@@ -14,6 +14,8 @@ const Intro = () => (
         src={require("@/assets/images/home/CongTy.jpg")}
         alt="Picture of the author"
         className="w-full h-full rounded-2xl object-contain"
+        width={500}
+        height={500}
       />
     </div>
     <div className="flex-1 flex flex-col p-5">
@@ -42,6 +44,8 @@ const Intro = () => (
             src={require("@/assets/images/home/mau-beo-go.jpg")}
             alt="mau-beo-go"
             className="h-full"
+            width={500}
+            height={500}
           />
         </figure>
         <figure className="flex-1 p-1">
@@ -49,6 +53,8 @@ const Intro = () => (
             src={require("@/assets/images/home/mau-bang-tai-cua.jpg")}
             alt="mau-bang-tai-cua"
             className="h-full"
+            width={500}
+            height={500}
           />
         </figure>
         <figure className="flex-1 p-1">
@@ -56,6 +62,8 @@ const Intro = () => (
             src={require("@/assets/images/home/mau-xich-nhua.jpg")}
             alt="mau-xich-nhua"
             className="h-full"
+            width={500}
+            height={500}
           />
         </figure>
       </div>
@@ -139,6 +147,8 @@ const Products = () => (
             src={product.img}
             alt={product.title}
             className="object-cover aspect-square"
+            width={500}
+            height={500}
           />
           <div className="flex items-center justify-center flex-1 mt-3">
             <h2 className="text-center text-2xl font-medium mt-1 line-clamp-2">
@@ -167,6 +177,8 @@ const Industry = () => (
             src={item.img}
             alt={item.title}
             className="object-cover aspect-square"
+            width={500}
+            height={500}
           />
           <div className="flex items-center justify-center flex-1 mt-3">
             <h2 className="text-center text-2xl font-medium mt-1">
@@ -217,6 +229,8 @@ const Rate = () => (
             src={item.img}
             alt={item.title}
             className="object-contain aspect-square my-6 invert"
+            width={500}
+            height={500}
           />
           <div className="flex items-center justify-center flex-1 mt-3">
             <h2 className="text-center text-4xl font-medium mt-1 uppercase text-[--color-primary] mb-6">
@@ -265,7 +279,7 @@ export default function Home() {
                   alt={"as"}
                   className="object-contain aspect-4/3 w-full"
                   width={500}
-                  height={300}
+                  height={500}
                 />
               )}
 
@@ -291,8 +305,8 @@ export default function Home() {
                       src={item.images[0]?.img}
                       alt={"as"}
                       className="object-contain aspect-4/3"
-                      width={150}
-                      height={150}
+                      width={500}
+                      height={500}
                     />
                     <div className="flex-1 ml-5">
                       <h1 className="text-2xl font-medium mt-5 line-clamp-2">
