@@ -163,42 +163,42 @@ const industry = [
   {
     img: HangKhong,
     title: "Hàng không",
-    url: "/industry/HangKhong",
+    url: "/HangKhong",
   },
   {
     img: BanhXe,
     title: "Sản xuất bánh xe",
-    url: "/industry/BanhXe",
+    url: "/BanhXe",
   },
   {
     img: ThucPham,
     title: "Thực phẩm",
-    url: "/industry/ThucPham",
+    url: "/ThucPham",
   },
   {
     img: Go,
     title: "Ngành Gỗ",
-    url: "/industry/Go",
+    url: "/Go",
   },
   {
     img: BaoBi,
     title: "Bao bì",
-    url: "/industry/BaoBi",
+    url: "/BaoBi",
   },
   {
     img: DienTu,
     title: "Ngành điện tử",
-    url: "/industry/DienTu",
+    url: "/DienTu",
   },
   {
     img: ThuocLa,
     title: "Ngành thuốc lá",
-    url: "/industry/ThuocLa",
+    url: "/ThuocLa",
   },
   {
     img: InAnMayMac,
     title: "In ấn, may mặc",
-    url: "/industry/InAnMayMac",
+    url: "/InAnMayMac",
   },
 ];
 
