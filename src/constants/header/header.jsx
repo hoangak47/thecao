@@ -5,7 +5,57 @@ import React from "react";
 import "./header.css";
 import { usePathname } from "next/navigation";
 import { SVGmenu } from "@/assets/svg";
-import { industry } from "@/app/page";
+
+import HangKhong from "@/assets/images/home/hang_khong.png";
+import BanhXe from "@/assets/images/home/banh_xe.png";
+import ThucPham from "@/assets/images/home/thuc_pham.png";
+import Go from "@/assets/images/home/go.png";
+import BaoBi from "@/assets/images/home/bao_bi.png";
+import DienTu from "@/assets/images/home/dien_tu.png";
+import ThuocLa from "@/assets/images/home/thuoc_la.png";
+import InAnMayMac from "@/assets/images/home/inan_maymac.png";
+export const industry = [
+  {
+    img: HangKhong,
+    title: "Hàng không",
+    link: "/HangKhong",
+  },
+  {
+    img: BanhXe,
+    title: "Sản xuất bánh xe",
+    link: "/BanhXe",
+  },
+  {
+    img: ThucPham,
+    title: "Thực phẩm",
+    link: "/ThucPham",
+  },
+  {
+    img: Go,
+    title: "Ngành Gỗ",
+    link: "/Go",
+  },
+  {
+    img: BaoBi,
+    title: "Bao bì",
+    link: "/BaoBi",
+  },
+  {
+    img: DienTu,
+    title: "Ngành điện tử",
+    link: "/DienTu",
+  },
+  {
+    img: ThuocLa,
+    title: "Ngành thuốc lá",
+    link: "/ThuocLa",
+  },
+  {
+    img: InAnMayMac,
+    title: "In ấn, may mặc",
+    link: "/InAnMayMac",
+  },
+];
 
 const menu = [
   {
