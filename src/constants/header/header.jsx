@@ -5,6 +5,7 @@ import React from "react";
 import "./header.css";
 import { usePathname } from "next/navigation";
 import { SVGmenu } from "@/assets/svg";
+import { industry } from "@/app/page";
 
 const menu = [
   {
@@ -57,6 +58,7 @@ const menu = [
   {
     title: "Ngành nghề",
     link: "/Career",
+    children: industry,
   },
   {
     title: "Dịch vụ",

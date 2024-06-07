@@ -159,46 +159,46 @@ import BaoBi from "@/assets/images/home/bao_bi.png";
 import DienTu from "@/assets/images/home/dien_tu.png";
 import ThuocLa from "@/assets/images/home/thuoc_la.png";
 import InAnMayMac from "@/assets/images/home/inan_maymac.png";
-const industry = [
+export const industry = [
   {
     img: HangKhong,
     title: "Hàng không",
-    url: "/HangKhong",
+    link: "/HangKhong",
   },
   {
     img: BanhXe,
     title: "Sản xuất bánh xe",
-    url: "/BanhXe",
+    link: "/BanhXe",
   },
   {
     img: ThucPham,
     title: "Thực phẩm",
-    url: "/ThucPham",
+    link: "/ThucPham",
   },
   {
     img: Go,
     title: "Ngành Gỗ",
-    url: "/Go",
+    link: "/Go",
   },
   {
     img: BaoBi,
     title: "Bao bì",
-    url: "/BaoBi",
+    link: "/BaoBi",
   },
   {
     img: DienTu,
     title: "Ngành điện tử",
-    url: "/DienTu",
+    link: "/DienTu",
   },
   {
     img: ThuocLa,
     title: "Ngành thuốc lá",
-    url: "/ThuocLa",
+    link: "/ThuocLa",
   },
   {
     img: InAnMayMac,
     title: "In ấn, may mặc",
-    url: "/InAnMayMac",
+    link: "/InAnMayMac",
   },
 ];
 
@@ -210,7 +210,7 @@ const Industry = () => (
     <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
       {industry.map((item, index) => (
         <Link
-          href={item.url}
+          href={item.link}
           key={index}
           className="flex-1 drop-shadow-[0_35px_35px_rgba(0,0,0,0.25)] overflow-hidden bg-white rounded-2xl p-2 flex flex-col"
         >
