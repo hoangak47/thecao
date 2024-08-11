@@ -1,54 +1,44 @@
 /* eslint-disable @next/next/no-img-element */
-"use client";
 
 import SwiperCustom from "@/components/swiper";
 import Body_ from "@/constants/body/body2";
 import Layout from "@/constants/layout/layout";
-import { getData } from "@/services";
 import Image from "next/image";
-import { useParams } from "next/navigation";
-import React, { useEffect } from "react";
+import React from "react";
 
-export default function Product({}) {
-  const { id } = useParams();
+import pvc1 from "@/assets/images/products/PVC/pvc1.png";
+import pvc2 from "@/assets/images/products/PVC/pvc2.png";
+import pvc3 from "@/assets/images/products/PVC/pvc3.png";
+import pvc4 from "@/assets/images/products/PVC/pvc4.png";
+import pvc5 from "@/assets/images/products/PVC/pvc5.png";
+import { GetData } from "@/components/getDataProduct/getData";
 
-  const [data, setData] = React.useState([]);
-  const [ui, setUi] = React.useState(null);
-
-  useEffect(() => {
-    Promise.all([getData(`products/${id}/data`), getData(`products/${id}/ui`)])
-      .then(([dataResponse, uiResponse]) => {
-        setData(dataResponse || []);
-        setUi(uiResponse || "");
-      })
-      .catch((error) => {
-        return error;
-      });
-  }, [id]);
+export default function Page({}) {
   return (
     <Layout>
       <SwiperCustom />
       <Body_>
-        {/* {ui && <ReactJsxParser jsx={ui} />} */}
-
         <>
+          <h1 className="text-4xl font-medium mt-5 text-center m-5 text-[--color-primary]">
+            Băng tải PVC
+          </h1>
           <p className="text-justify mt-5">
-            <span className="font-black text-xl">&#10045;</span> Băng tải PVC là
-            loại băng tải cơ bản, phổ biến nhất và giá cả phải chăng nhất. Chúng
-            nhẹ, mạnh mẽ, dễ kết nối. Chúng vượt trội về sức mạnh, độ bền và
-            tuổi thọ lâu dài.
+            <span className="font-black text-xl">&#10045;</span>{" "}
+            <strong>Băng tải PVC</strong> là loại băng tải cơ bản, phổ biến nhất
+            và giá cả phải chăng nhất. Chúng nhẹ, mạnh mẽ, dễ kết nối. Chúng
+            vượt trội về sức mạnh, độ bền và tuổi thọ lâu dài.
           </p>
           <p className="text-justify mt-5">
-            <span className="font-black text-xl">&#10045;</span> Băng tải PVC có
-            đa dạng các loại băng tải khác nhau, với độ cứng, hình dạng và màu
-            sắc khác nhau và bao gồm nhiều loại đặc biệt dành riêng cho các
-            ngành sản xuất khác nhau.
+            <span className="font-black text-xl">&#10045;</span>{" "}
+            <strong>Băng tải PVC</strong> có đa dạng các loại băng tải khác
+            nhau, với độ cứng, hình dạng và màu sắc khác nhau và bao gồm nhiều
+            loại đặc biệt dành riêng cho các ngành sản xuất khác nhau.
           </p>
 
           <div className="flex mt-5 items-center sm:flex-row flex-col">
             <div className="flex-1 flex justify-center">
               <Image
-                src={require("@/assets/images/products/PVC/pvc1.png")}
+                src={pvc1}
                 alt="PVC 1"
                 className="lg:w-2/3 rounded-2xl object-contain"
                 width={500}
@@ -57,7 +47,7 @@ export default function Product({}) {
             </div>
             <div className="flex-1 flex justify-center">
               <Image
-                src={require("@/assets/images/products/PVC/pvc2.png")}
+                src={pvc2}
                 alt="PVC 2"
                 className="lg:w-2/3 rounded-2xl object-contain"
                 width={500}
@@ -81,9 +71,9 @@ export default function Product({}) {
 
           <div className="flex justify-center mt-5">
             <Image
-              src={require("@/assets/images/products/PVC/pvc3.png")}
+              src={pvc3}
               alt="PVC 3"
-              className="w-1/2 rounded-2xl object-contain"
+              className="w-full md:w-1/2 lg:w-1/3 rounded-2xl object-contain"
               width={500}
               height={500}
             />
@@ -104,9 +94,9 @@ export default function Product({}) {
           </p>
           <div className="flex justify-center mt-5">
             <Image
-              src={require("@/assets/images/products/PVC/pvc4.png")}
+              src={pvc4}
               alt="PVC 4"
-              className="w-1/2 rounded-2xl object-contain"
+              className="w-full md:w-1/2 lg:w-1/3 rounded-2xl object-contain"
               width={500}
               height={500}
             />
@@ -126,9 +116,9 @@ export default function Product({}) {
           </p>
           <div className="flex justify-center mt-5">
             <Image
-              src={require("@/assets/images/products/PVC/pvc5.png")}
+              src={pvc5}
               alt="PVC 5"
-              className="w-1/2 rounded-2xl object-contain"
+              className="w-full md:w-1/2 lg:w-1/3 rounded-2xl object-contain"
               width={500}
               height={500}
             />
@@ -136,55 +126,7 @@ export default function Product({}) {
         </>
 
         <div className="w-full h-[1px] bg-[#000] my-10"></div>
-
-        <div
-          className={`grid grid-cols-2 sm:grid-cols-3 ${id === "ChiuNhiet" ? "" : "lg:grid-cols-4"} gap-1 mt-10`}
-        >
-          {data.length > 0 &&
-            typeof data === "object" &&
-            data?.map((item, index) => {
-              return (
-                <div
-                  key={index}
-                  className="flex flex-col justify-center p-2 shadow-md rounded-md mb-5"
-                >
-                  <figure
-                    className="image image_resized"
-                    style={{ width: "100%" }}
-                  >
-                    <Image
-                      src={require(
-                        `@/assets/images/${id === "PU" || id === "TPU" ? "PVC" : id}/${item.img.split("/")[4]}`
-                      )}
-                      alt=""
-                      className="w-full aspect-square"
-                      width={500}
-                      height={500}
-                    />
-                  </figure>
-                  <p className="text-center mt-2 text-lg font-semibold mb-5">
-                    {item.name}
-                  </p>
-                  {item?.material && (
-                    <div>
-                      <strong>Chất liệu:</strong>
-                      <span> {item.material}</span>
-                    </div>
-                  )}
-                  {item?.info && (
-                    <div>
-                      <strong>Thông tin:</strong>
-                      {item.info.map((info, index) => (
-                        <span className="block" key={index}>
-                          {info}
-                        </span>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              );
-            })}
-        </div>
+        <GetData />
       </Body_>
     </Layout>
   );

@@ -298,25 +298,25 @@ export default function Home() {
               {getData_.slice(1, 4).map((item, index) => (
                 <div
                   key={index}
-                  className="flex flex-col hover:bg-gray-100 p-5 rounded-md cursor-pointer"
+                  className="flex flex-col hover:bg-gray-100 md:px-5 py-5 rounded-md cursor-pointer"
                 >
                   <div className="flex">
                     <Image
                       src={item.images[0]?.img}
                       alt={"as"}
-                      className="object-contain aspect-4/3"
+                      className="object-contain aspect-4/3 md:w-[200px] w-[100px] rounded-md"
                       width={500}
                       height={500}
                     />
                     <div className="flex-1 ml-5">
-                      <h1 className="text-2xl font-medium mt-5 line-clamp-2">
+                      <h1 className="md:text-2xl text-base font-medium line-clamp-2">
                         {item.title}
                       </h1>
-                      <p className="text-base mt-1 text-[--color-gray] line-clamp-2">
+                      <p className="md:text-base text-sm mt-1 text-[--color-gray] line-clamp-2">
                         {item.summary}
                       </p>
                       {/* day */}
-                      <p className="text-base mt-1 text-[--color-gray]">
+                      <p className="text-base mt-1 text-[--color-gray] md:block hidden">
                         Monday 23, 2023
                       </p>
                     </div>

@@ -17,7 +17,7 @@ import jtExpress from "@/assets/images/home/Logo-JT-Express.png";
 import gs from "@/assets/images/home/GS.png";
 import kenda from "@/assets/images/home/Kenda_Logo.svg.png";
 import Image from "next/image";
-import useWidth from "@/hooks/useWidth";
+import useWindowSize from "@/hooks/useWindowSize";
 
 const partners = [
   {
@@ -51,7 +51,7 @@ const partners = [
 ];
 
 export default function Partner() {
-  const width = useWidth();
+  const width = useWindowSize().width;
 
   return (
     <section className="flex flex-col mt-20 md:h-[200px] h-[100px]">

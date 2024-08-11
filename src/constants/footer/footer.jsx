@@ -3,6 +3,8 @@ import footerImage from "@/assets/images/footer.jpg";
 import Image from "next/image";
 import { SVGfacebook, SVGmastercard, SVGvisa, SVGyoutube } from "@/assets/svg";
 
+import logo from "@/assets/images/logo.png";
+
 export default function Footer() {
   return (
     <div
@@ -13,11 +15,7 @@ export default function Footer() {
     >
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mx-auto px-0 pb-10 border-b-2 border-black">
         <div className="flex flex-col text-center">
-          <Image
-            src={require("@/assets/images/logo.png")}
-            alt="Footer"
-            className="w-2/3 mx-auto"
-          />
+          <Image src={logo} alt="Footer" className="w-2/3 mx-auto" />
           <h3 className="text-2xl font-bold">
             Công ty TNHH THẾ CAO
             <br />

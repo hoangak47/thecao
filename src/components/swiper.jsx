@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -29,6 +31,8 @@ export default function SwiperCustom() {
             src={require("@/assets/images/home/slide-1.jpg")}
             alt="Picture of the author"
             className="w-full h-full"
+            width={500}
+            height={500}
           />
 
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center text-white">
@@ -45,6 +49,8 @@ export default function SwiperCustom() {
             src={require("@/assets/images/home/slide-2.jpg")}
             alt="Picture of the author"
             className="w-full h-full"
+            width={500}
+            height={500}
           />
         </SwiperSlide>
         <SwiperSlide>
@@ -52,6 +58,8 @@ export default function SwiperCustom() {
             src={require("@/assets/images/home/slide-3.jpg")}
             alt="Picture of the author"
             className="w-full h-full"
+            width={500}
+            height={500}
           />
         </SwiperSlide>
         <SwiperSlide>
@@ -59,6 +67,8 @@ export default function SwiperCustom() {
             src={require("@/assets/images/home/slide-4.jpg")}
             alt="Picture of the author"
             className="w-full h-full"
+            width={500}
+            height={500}
           />
         </SwiperSlide>
         <SwiperSlide>
@@ -66,6 +76,8 @@ export default function SwiperCustom() {
             src={require("@/assets/images/home/slide-5.jpg")}
             alt="Picture of the author"
             className="w-full h-full"
+            width={500}
+            height={500}
           />
         </SwiperSlide>
       </Swiper>

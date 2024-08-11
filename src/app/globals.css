@@ -10,10 +10,6 @@
   --color-primary: #da251c;
 }
 
-::-webkit-scrollbar {
-  width: 0;
-}
-
 .swiper {
   width: 100%;
   height: 100%;
