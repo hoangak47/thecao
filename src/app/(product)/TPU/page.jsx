@@ -6,10 +6,13 @@ import Layout from "@/constants/layout/layout";
 import Image from "next/image";
 import React from "react";
 
-import pu1 from "@/assets/images/products/PU/pu1.png";
-import pu2 from "@/assets/images/products/PU/pu2.png";
-import pu3 from "@/assets/images/products/PU/pu3.png";
-import pu4 from "@/assets/images/products/PU/pu4.png";
+import tpu1 from "@/assets/images/products/TPU/tpu1.png";
+import tpu2 from "@/assets/images/products/TPU/tpu2.png";
+import tpu3 from "@/assets/images/products/TPU/tpu3.png";
+import tpu4 from "@/assets/images/products/TPU/tpu4.png";
+import tpu5 from "@/assets/images/products/TPU/tpu5.png";
+import tpu6 from "@/assets/images/products/TPU/tpu6.png";
+import tpu7 from "@/assets/images/products/TPU/tpu7.png";
 
 import { GetData } from "@/components/getDataProduct/getData";
 
@@ -37,7 +40,7 @@ export default function Page({}) {
 
           <div className="flex justify-center mt-5">
             <Image
-              src={pu1}
+              src={tpu1}
               alt="PU 1"
               className="w-full md:w-1/2  rounded-2xl object-contain"
               width={500}
