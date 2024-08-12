@@ -8,6 +8,7 @@
 :root {
   --color-gray: #9e9e9e;
   --color-primary: #da251c;
+  --color-blue: #0070c0;
 }
 
 .swiper {
@@ -81,6 +82,10 @@ figure {
 
 p strong {
   color: var(--color-primary);
+}
+
+p strong.blue {
+  color: var(--color-blue);
 }
 
 .divider {

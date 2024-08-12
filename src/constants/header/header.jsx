@@ -129,7 +129,7 @@ export default function Header() {
   const [open, setOpen] = React.useState(false);
 
   return (
-    <nav className="bg-white border-gray-200 dark:bg-gray-900 dark:border-gray-700 relative">
+    <nav className="bg-white border-gray-200 relative">
       <div className="flex flex-wrap md:items-center justify-between mx-auto md:px-11 py-5 px-4  md:flex-row flex-col">
         <a href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
           <Image
