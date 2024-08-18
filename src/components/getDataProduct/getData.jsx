@@ -28,19 +28,17 @@ export function GetData() {
           return (
             <div
               key={index}
-              className="flex flex-col justify-center p-2 shadow-md rounded-md mb-5"
+              className="flex flex-col p-2 shadow-md rounded-md mb-5"
             >
-              <figure className="image image_resized" style={{ width: "100%" }}>
-                <Image
-                  src={require(
-                    `@/assets/images/${id === "PU" || id === "TPU" ? "PVC" : id}/${item.img.split("/")[4]}`
-                  )}
-                  alt=""
-                  className="w-full aspect-square"
-                  width={500}
-                  height={500}
-                />
-              </figure>
+              <Image
+                src={require(
+                  `@/assets/images/${id === "PU" || id === "TPU" ? "PVC" : id}/${item.img.split("/")[4]}`
+                )}
+                alt=""
+                className="w-full h-full max-h-56 object-cover"
+                width={500}
+                height={500}
+              />
               <p className="text-center mt-2 text-lg font-semibold mb-5">
                 {item.name}
               </p>
