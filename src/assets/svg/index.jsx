@@ -102,3 +102,21 @@ export const SVGmenu = ({
     <path fill={fill} d="M3 18h18v-2H3v2zM3 13h18v-2H3v2zM3 6v2h18V6H3z" />
   </svg>
 );
+
+export const SVGClose = ({
+  height = "1em",
+  width = "1em",
+  fill = "currentColor",
+}) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={width}
+    height={height}
+    viewBox="0 0 24 24"
+  >
+    <path
+      fill={fill}
+      d="M6.4 19L5 17.6l5.6-5.6L5 6.4L6.4 5l5.6 5.6L17.6 5L19 6.4L13.4 12l5.6 5.6l-1.4 1.4l-5.6-5.6z"
+    />
+  </svg>
+);

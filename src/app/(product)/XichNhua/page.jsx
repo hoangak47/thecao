@@ -49,7 +49,7 @@ export default function Page({}) {
             đây là những ưu điểm:
           </p>
 
-          <p className="text-justify mt-5">
+          <span className="text-justify mt-5">
             <h4 className="text-xl mt-5 text-[--color-primary]">
               Khả năng chống lại các điều kiện khắc nghiệt
             </h4>
@@ -58,8 +58,8 @@ export default function Page({}) {
             khác như UHMW profile cho phép khách hàng trên toàn thế giới tăng
             năng lực sản xuất, giảm chi phí và giảm thiểu thời gian ngừng hoạt
             động trong các nhà máy.
-          </p>
-          <p className="text-justify mt-5">
+          </span>
+          <span className="text-justify mt-5">
             <h4 className="text-xl mt-5 text-[--color-primary]">
               Khả năng chống lại các điều kiện khắc nghiệt
             </h4>
@@ -68,16 +68,16 @@ export default function Page({}) {
             khác như UHMW profile cho phép khách hàng trên toàn thế giới tăng
             năng lực sản xuất, giảm chi phí và giảm thiểu thời gian ngừng hoạt
             động trong các nhà máy.
-          </p>
-          <p className="text-justify mt-5">
+          </span>
+          <span className="text-justify mt-5">
             <h4 className="text-xl mt-5 text-[--color-primary]">
               Thời gian tồn tại lâu hơn
             </h4>
             Trong điều kiện tiêu chuẩn, dây đai mô-đun bằng nhựa thường có tuổi
             thọ rất cao, kéo dài trong nhiều năm mà không thay đổi hiệu suất và
             ít hoặc không cần bảo dưỡng.
-          </p>
-          <p className="text-justify mt-5">
+          </span>
+          <span className="text-justify mt-5">
             <h4 className="text-xl mt-5 text-[--color-primary]">
               Cường độ cao
             </h4>
@@ -86,8 +86,8 @@ export default function Page({}) {
             Đồng thời, chúng cũng thích hợp cho các ứng dụng tích lũy và chuyển
             hướng có ảnh hưởng đến hoạt động và tuổi thọ của các giải pháp dây
             đai khác.
-          </p>
-          <p className="text-justify mt-5">
+          </span>
+          <span className="text-justify mt-5">
             <h4 className="text-xl mt-5 text-[--color-primary]">
               Nhiều loại bề mặt
             </h4>
@@ -95,7 +95,7 @@ export default function Page({}) {
             để mang lại các đặc tính cụ thể cần thiết. Từ lưới phẳng đến đỉnh
             con lăn có một bề mặt phù hợp với các yêu cầu của ứng dụng băng tải
             của bạn.
-          </p>
+          </span>
         </>
 
         <div className="w-full h-[1px] bg-[#000] my-10"></div>

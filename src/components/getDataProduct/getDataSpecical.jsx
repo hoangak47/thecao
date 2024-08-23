@@ -4,146 +4,21 @@ import Image from "next/image";
 import { getData } from "@/services";
 import React, { useEffect } from "react";
 import { usePathname } from "next/navigation";
+import Modal from "../Modal";
 export function GetDataSpecical() {
   const id = usePathname().slice(1);
-
-  const [data, setData] = React.useState([
-    {
-      name: `3M, 5M, 8M, 14M`,
-      thumbsnail: `specifications HTD.png`,
-      child: [
-        {
-          name: "3M",
-          specifications: {
-            P: "3.0 mm",
-            H: "2.4 mm",
-            Ht: "1.22 mm",
-          },
-          image: "3M.jpg",
-        },
-        {
-          name: "5M",
-          specifications: {
-            P: "5.0 mm",
-            H: "3.6 mm",
-            Ht: "2.1 mm",
-          },
-          image: "5M.jpg",
-        },
-        {
-          name: "8M",
-          specifications: {
-            P: "8.0 mm",
-            H: "5.6 mm",
-            Ht: "3.9 mm",
-          },
-          image: "8M.jpg",
-        },
-        {
-          name: "14M",
-          specifications: {
-            P: "14.0 mm",
-            H: "10.0 mm",
-            Ht: "6.1 mm",
-          },
-          image: "14M.jpg",
-        },
-      ],
-    },
-    {
-      name: "S5M, S5M-black, S8M, S8M-black, S8M-green",
-      thumbsnail: `specifications SM.png`,
-      child: [
-        {
-          name: "S5M",
-          specifications: {
-            P: "5.0 mm",
-            H: "3.4 mm",
-            Ht: "1.9 mm",
-          },
-          image: "S5M.jpg",
-        },
-        {
-          name: "S5M-black",
-          specifications: {
-            P: "5.0 mm",
-            H: "3.4 mm",
-            Ht: "1.9 mm",
-          },
-          image: "S5M-black.jpg",
-        },
-        {
-          name: "S8M",
-          specifications: {
-            P: "8.0 mm",
-            H: "5.2 mm",
-            Ht: "2.95 mm",
-          },
-          image: "S8M.jpg",
-        },
-        {
-          name: "S8M-black",
-          specifications: {
-            P: "8.0 mm",
-            H: "5.2 mm",
-            Ht: "2.95 mm",
-          },
-          image: "S8M-black.jpg",
-        },
-        {
-          name: "S8M-green",
-          specifications: {
-            P: "8.0 mm",
-            H: "5.2 mm",
-            Ht: "2.95 mm",
-          },
-          image: "S8M-green.jpg",
-        },
-      ],
-    },
-    {
-      name: "T5, T10, T10-green, T20",
-      thumbsnail: `specifications T.png`,
-      child: [
-        {
-          name: "T5",
-          specifications: {
-            P: "5.0 mm",
-            H: "2.2 mm",
-            Ht: "1.2 mm",
-          },
-          image: "T5.jpg",
-        },
-        {
-          name: "T10",
-          specifications: {
-            P: "10.0 mm",
-            H: "4.5 mm",
-            Ht: "2.5 mm",
-          },
-          image: "T10.jpg",
-        },
-        {
-          name: "T10-green",
-          specifications: {
-            P: "10.0 mm",
-            H: "4.5 mm",
-            Ht: "2.5 mm",
-          },
-          image: "T10-green.jpg",
-        },
-        {
-          name: "T20",
-          specifications: {
-            P: "20.0 mm",
-            H: "8.0 mm",
-            Ht: "5.0 mm",
-          },
-          image: "T20.jpg",
-        },
-      ],
-    },
-  ]);
+  const [currentIndex, setCurrentIndex] = React.useState(0);
+  const [currentIndex2, setCurrentIndex2] = React.useState(0);
+  const [data, setData] = React.useState(0);
+  useEffect(() => {
+    getData(`products/${id}/data`)
+      .then((data) => {
+        setData(data || []);
+      })
+      .catch((error) => {
+        return error;
+      });
+  }, []);
 
   return (
     <div className="grid grid-cols-2 sm:grid-cols-3 gap-1">
@@ -152,8 +27,78 @@ export function GetDataSpecical() {
           return (
             <div
               key={index}
-              className="flex flex-col p-2 shadow-md rounded-md mb-5 hover:shadow-2xl transition-all cursor-pointer"
+              onClick={() => {
+                setCurrentIndex2(index);
+              }}
+              className="flex flex-col p-2 shadow-md rounded-md mb-5 hover:shadow-2xl transition-all cursor-pointer relative"
             >
+              <Modal setCurrentIndex={setCurrentIndex}>
+                <div className="flex gap-1 md:flex-row flex-col h-full md:overflow-hidden overflow-y-scroll not-scrollbar">
+                  {data[index]?.thumbsnail && (
+                    <div className="flex-[3] flex justify-center items-center">
+                      <Image
+                        src={require(
+                          `@/assets/images/products/${id}/${data[index]?.thumbsnail}`
+                        )}
+                        alt={data[index].name}
+                        className="w-full h-full object-contain"
+                        width={500}
+                        height={500}
+                      />
+                    </div>
+                  )}
+
+                  <div className={`flex-[3] flex justify-center items-center`}>
+                    <Image
+                      src={require(
+                        `@/assets/images/products/${id}/${data[currentIndex2]?.child[currentIndex]?.image}`
+                      )}
+                      alt={data[currentIndex2]?.name}
+                      className="w-full h-full object-contain"
+                      width={500}
+                      height={500}
+                    />
+                  </div>
+                  <div
+                    className={`flex-${data[index]?.thumbsnail ? "[2]" : 1} md:overflow-scroll overflow-[none] not-scrollbar px-3`}
+                  >
+                    {data[currentIndex2]?.child.map((item, index_) => {
+                      return (
+                        <div
+                          key={index_}
+                          onClick={() => {
+                            setCurrentIndex(index_);
+                          }}
+                          className="flex flex-col p-2 cursor-pointer relative border-b-black border-b-[1px] transition-all"
+                        >
+                          <h3 className="text-center line-clamp-1 mt-8 text-slate-700">
+                            {item.name}
+                          </h3>
+                          {item?.specifications && (
+                            <span>
+                              {currentIndex === index_ &&
+                                Object.entries(item.specifications).map(
+                                  (item_) => {
+                                    return (
+                                      <p
+                                        key={item_}
+                                        className={`text-left line-clamp-1 mt-8 text-slate-700`}
+                                      >
+                                        {item_[0]} : {item_[1]}
+                                      </p>
+                                    );
+                                  }
+                                )}
+                            </span>
+                          )}
+
+                          {item?.detail && <div></div>}
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              </Modal>
               <Image
                 src={require(
                   `@/assets/images/products/${id}/${item.child[0].image}`

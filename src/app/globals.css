@@ -92,3 +92,12 @@ p strong.blue {
   border-top: 1px solid var(--color-gray);
   margin: 1rem 0;
 }
+
+.not-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.not-scrollbar::-webkit-scrollbar {
+  display: none;
+}

@@ -4,10 +4,12 @@ import Image from "next/image";
 import { getData } from "@/services";
 import React, { useEffect } from "react";
 import { usePathname } from "next/navigation";
+import Modal from "../Modal";
 export function GetData() {
   const id = usePathname().slice(1);
 
   const [data, setData] = React.useState([]);
+  const [currentIndex, setCurrentIndex] = React.useState(0);
 
   useEffect(() => {
     getData(`products/${id}/data`)
@@ -22,20 +24,31 @@ export function GetData() {
     <div
       className={`grid grid-cols-2 sm:grid-cols-3 ${id === "ChiuNhiet" ? "" : "lg:grid-cols-4"} gap-1 mt-10`}
     >
-      {data.length > 0 &&
+      {data.length > 0 ? (
         typeof data === "object" &&
         data?.map((item, index) => {
           return (
             <div
               key={index}
-              className="flex flex-col p-2 shadow-md rounded-md mb-5"
+              className="flex flex-col p-2 shadow-md rounded-md mb-5 relative"
             >
+              <Modal setCurrentIndex={setCurrentIndex}>
+                <Image
+                  src={require(
+                    `@/assets/images/${id === "PU" || id === "TPU" ? "PVC" : id}/${item.img.split("/")[4]}`
+                  )}
+                  alt=""
+                  className="w-full h-full object-contain"
+                  width={500}
+                  height={500}
+                />
+              </Modal>
               <Image
                 src={require(
                   `@/assets/images/${id === "PU" || id === "TPU" ? "PVC" : id}/${item.img.split("/")[4]}`
                 )}
                 alt=""
-                className="w-full h-full max-h-56 object-cover"
+                className="w-full h-full max-h-56 object-contain"
                 width={500}
                 height={500}
               />
@@ -60,7 +73,10 @@ export function GetData() {
               )}
             </div>
           );
-        })}
+        })
+      ) : (
+        <h1>Chua co du lieu</h1>
+      )}
     </div>
   );
 }
