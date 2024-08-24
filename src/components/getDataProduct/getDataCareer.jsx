@@ -13,9 +13,9 @@ export function GetDataCareer() {
   const [currentIndex, setCurrentIndex] = React.useState(0);
 
   useEffect(() => {
-    getData(`${id === "Career" ? "Career/data" : `Career/${id}/data`}`)
+    getData(`${id}/data`)
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         setData(data || []);
       })
       .catch((error) => {
@@ -32,17 +32,15 @@ export function GetDataCareer() {
         data?.map((item, index) => {
           return (
             <div key={index}>
-              {id === "Career" ? (
+              {id === "Career" || id === "machining" ? (
                 <Link
                   href={item.url}
                   className="flex flex-col p-2 shadow-md rounded-md mb-5 relative"
                 >
-                  {id === "Career" ? null : (
+                  {id === "Career" || id === "machining" ? null : (
                     <Modal setCurrentIndex={setCurrentIndex}>
                       <Image
-                        src={require(
-                          `@/assets/images/${id === "Career" ? "Career" : `Career/${id}`}/${item.img}`
-                        )}
+                        src={require(`@/assets/images/${id}/${item.img}`)}
                         alt=""
                         className="w-full h-full object-contain"
                         width={500}
@@ -52,9 +50,7 @@ export function GetDataCareer() {
                   )}
 
                   <Image
-                    src={require(
-                      `@/assets/images/${id === "Career" ? "Career" : `Career/${id}`}/${item.img}`
-                    )}
+                    src={require(`@/assets/images/${id}/${item.img}`)}
                     alt=""
                     className="w-full h-full min-h-48 object-cover"
                     width={500}
@@ -76,7 +72,7 @@ export function GetDataCareer() {
                           <Modal setCurrentIndex={setCurrentIndex}>
                             <Image
                               src={require(
-                                `@/assets/images/${id === "Career" ? "Career" : `Career/${id}`}/${item_?.img}`
+                                `@/assets/images/${id}/${item_?.img}`
                               )}
                               alt={item_?.name}
                               className="w-full h-full object-contain"
@@ -87,9 +83,7 @@ export function GetDataCareer() {
                         )}
 
                         <Image
-                          src={require(
-                            `@/assets/images/${id === "Career" ? "Career" : `Career/${id}`}/${item_?.img}`
-                          )}
+                          src={require(`@/assets/images/${id}/${item_?.img}`)}
                           alt={item_?.name}
                           className="w-full h-full min-h-60 max-h-96 object-cover aspect-square"
                           width={500}

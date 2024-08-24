@@ -18,42 +18,42 @@ export const industry = [
   {
     img: HangKhong,
     title: "Hàng không",
-    link: "/HangKhong",
+    link: "/bang-tai-nganh-hang-khong",
   },
   {
     img: BanhXe,
     title: "Sản xuất bánh xe",
-    link: "/BanhXe",
+    link: "/bang-tai-san-xuat-banh-xe",
   },
   {
     img: ThucPham,
     title: "Thực phẩm",
-    link: "/ThucPham",
+    link: "/bang-tai-thuc-pham",
   },
   {
     img: Go,
     title: "Ngành Gỗ",
-    link: "/Go",
+    link: "/bang-tai-nganh-go",
   },
   {
     img: BaoBi,
     title: "Bao bì",
-    link: "/BaoBi",
+    link: "/bang-tai-nganh-bao-bi",
   },
   {
     img: DienTu,
     title: "Ngành điện tử",
-    link: "/DienTu",
+    link: "/bang-tai-nganh-dien-tu",
   },
   {
     img: ThuocLa,
     title: "Ngành thuốc lá",
-    link: "/ThuocLa",
+    link: "/bang-tai-thuoc-la",
   },
   {
     img: InAnMayMac,
     title: "In ấn, may mặc",
-    link: "/InAnMayMac",
+    link: "/bang-tai-nganh-may-mac",
   },
 ];
 
@@ -108,15 +108,14 @@ const menu = [
   {
     title: "Ngành nghề",
     link: "/Career",
-    children: industry,
   },
   {
-    title: "Dịch vụ",
-    link: "/services",
+    title: "Gia Công",
+    link: "/machining",
   },
   {
-    title: "Blogs",
-    link: "/blogs",
+    title: "Tin tức",
+    link: "/news",
   },
   {
     title: "Liên hệ",

@@ -11,7 +11,7 @@ export default function Footer() {
       style={{
         backgroundImage: `url(${footerImage.src})`,
       }}
-      className={`bg-cover bg-center bg-no-repeat text-white p-14 font-mono`}
+      className={`bg-cover bg-center bg-no-repeat text-white md:p-14 p-4 font-mono`}
     >
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mx-auto px-0 pb-10 border-b-2 border-black">
         <div className="flex flex-col text-center">

@@ -7,6 +7,7 @@ import React from "react";
 import { GetData } from "@/components/getDataProduct/getData";
 import Body from "@/constants/body";
 import { GetDataCareer } from "@/components/getDataProduct/getDataCareer";
+import Partner from "@/components/partners";
 
 export const metadata = {
   title: " Ngành thực phẩm",
@@ -50,6 +51,7 @@ export default function Page({}) {
 
         <div className="w-full h-[1px] bg-[#000] my-10"></div>
         <GetDataCareer />
+        <Partner />
       </Body>
     </Layout>
   );

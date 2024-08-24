@@ -6,6 +6,7 @@ import Layout from "@/constants/layout/layout";
 import React from "react";
 
 import { GetDataCareer } from "@/components/getDataProduct/getDataCareer";
+import Partner from "@/components/partners";
 
 export const metadata = {
   title: "Các ngành nghề",
@@ -22,6 +23,8 @@ export default function Page({}) {
 
         <GetDataCareer />
       </Body_>
+
+      <Partner />
     </Layout>
   );
 }
