@@ -9,7 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@ckeditor/ckeditor5-react": "^9.0.0",
     "axios": "^1.7.3",
+    "ckeditor5": "^43.0.0",
+    "ckeditor5-premium-features": "^43.0.0",
     "firebase": "^10.12.2",
     "next": "14.2.3",
     "promise": "^8.3.0",
