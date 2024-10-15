@@ -19,7 +19,7 @@ import jtExpress from "@/assets/images/home/Logo-JT-Express.png";
 import gs from "@/assets/images/home/GS.png";
 import kenda from "@/assets/images/home/Kenda_Logo.svg.png";
 
-import ino from "@/assets/images/INO.png";
+import ino from "@/assets/images/ino.png";
 import allstart from "@/assets/images/allstart.jpg";
 import kclearngen from "@/assets/images/kclearngen.jpg";
 import foshan from "@/assets/images/foshan.jpg";
