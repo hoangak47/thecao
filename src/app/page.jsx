@@ -268,7 +268,22 @@ export default function Home() {
         <Products />
         <Industry />
         <Rate />
-        <Partner />
+        <Partner partner={true}>
+          <h1>
+            <p className="text-4xl font-medium mt-5 text-center m-5">
+              Đối tác với{" "}
+              <span className="text-[--color-primary]">Thế Cao</span>
+            </p>
+          </h1>
+        </Partner>
+        <Partner>
+          <h1>
+            <p className="text-4xl font-medium mt-5 text-center m-5">
+              Khách hàng hợp tác với{" "}
+              <span className="text-[--color-primary]">Thế Cao</span>
+            </p>
+          </h1>
+        </Partner>
         <section className="flex flex-col mt-20">
           <h1 className="text-4xl font-medium mt-5 text-center m-5">BLOGS</h1>
           <div className="flex mt-10 md:flex-row flex-col">

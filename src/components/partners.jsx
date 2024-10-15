@@ -18,10 +18,20 @@ import aceCook from "@/assets/images/home/Logo-AceCook-VN.png";
 import jtExpress from "@/assets/images/home/Logo-JT-Express.png";
 import gs from "@/assets/images/home/GS.png";
 import kenda from "@/assets/images/home/Kenda_Logo.svg.png";
+
+import ino from "@/assets/images/INO.png";
+import allstart from "@/assets/images/allstart.jpg";
+import kclearngen from "@/assets/images/kclearngen.jpg";
+import foshan from "@/assets/images/foshan.jpg";
+import flexco from "@/assets/images/flexco.png";
+import hongbelt from "@/assets/images/hong'sbelt.webp";
+import reoclearn from "@/assets/images/reoclean.png";
+import hairise from "@/assets/images/hairise.jpg";
+
 import Image from "next/image";
 import useWindowSize from "@/hooks/useWindowSize";
 
-const partners = [
+const customer = [
   {
     img: nestle,
     title: "Nestlé",
@@ -52,11 +62,47 @@ const partners = [
   },
 ];
 
-export default function Partner() {
+const partners = [
+  {
+    img: ino,
+    title: "INO",
+  },
+  {
+    img: allstart,
+    title: "Allstart",
+  },
+  {
+    img: kclearngen,
+    title: "Kclearngen",
+  },
+  {
+    img: foshan,
+    title: "Foshan",
+  },
+  {
+    img: flexco,
+    title: "Flexco",
+  },
+  {
+    img: hongbelt,
+    title: "Hong's belt",
+  },
+  {
+    img: reoclearn,
+    title: "Reoclean",
+  },
+  {
+    img: hairise,
+    title: "Hairise",
+  },
+];
+
+export default function Partner({ partner = false, children }) {
   const width = useWindowSize().width;
 
   return (
     <section className="flex flex-col mt-20 md:h-[200px] h-[100px]">
+      {children}
       <Swiper
         slidesPerView={
           width > 768
@@ -79,15 +125,25 @@ export default function Partner() {
         className="mySwiper"
       >
         {/* <SwiperSlide>Slide 1</SwiperSlide> */}
-        {partners.map((partner, index) => (
-          <SwiperSlide key={index}>
-            <Image
-              src={partner.img}
-              alt={partner.title}
-              className="!object-contain aspect-square w-full"
-            />
-          </SwiperSlide>
-        ))}
+        {partner === false
+          ? customer.map((partner, index) => (
+              <SwiperSlide key={index}>
+                <Image
+                  src={partner.img}
+                  alt={partner.title}
+                  className="!object-contain aspect-square w-full"
+                />
+              </SwiperSlide>
+            ))
+          : partners.map((partner, index) => (
+              <SwiperSlide key={index}>
+                <Image
+                  src={partner.img}
+                  alt={partner.title}
+                  className="!object-contain aspect-square w-full"
+                />
+              </SwiperSlide>
+            ))}
       </Swiper>
     </section>
   );

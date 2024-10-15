@@ -66,6 +66,15 @@ export default function Infomation() {
           <p>Rất mong nhận được sự ủng hộ và hợp tác của Quý khách!</p>
         </div>
       </Body_>
+
+      <Partner partner={true}>
+        <h1>
+          <p className="text-4xl font-medium mt-5 text-center m-5">
+            Đối tác và khách hàng của{" "}
+            <span className="text-[--color-primary]">Thế Cao</span>
+          </p>
+        </h1>
+      </Partner>
       <Partner />
     </Layout>
   );
