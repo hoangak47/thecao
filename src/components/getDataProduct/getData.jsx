@@ -27,6 +27,13 @@ export function GetData() {
       {data.length > 0 ? (
         typeof data === "object" &&
         data?.map((item, index) => {
+          const imageSrc = item.img.startsWith("https")
+            ? item.img
+            : require(
+                `@/assets/images/${id === "PU" || id === "TPU" ? "PVC" : id}/${item.img.split("/")[4]}`
+              );
+
+          console.log(index, imageSrc);
           return (
             <div
               key={index}
@@ -34,9 +41,7 @@ export function GetData() {
             >
               <Modal setCurrentIndex={setCurrentIndex}>
                 <Image
-                  src={require(
-                    `@/assets/images/${id === "PU" || id === "TPU" ? "PVC" : id}/${item.img.split("/")[4]}`
-                  )}
+                  src={imageSrc}
                   alt=""
                   className="w-full h-full object-contain"
                   width={500}
@@ -44,10 +49,8 @@ export function GetData() {
                 />
               </Modal>
               <Image
-                src={require(
-                  `@/assets/images/${id === "PU" || id === "TPU" ? "PVC" : id}/${item.img.split("/")[4]}`
-                )}
-                alt=""
+                src={imageSrc}
+                alt={item.name}
                 className="w-full h-full max-h-56 object-contain"
                 width={500}
                 height={500}

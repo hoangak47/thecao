@@ -1,4 +1,4 @@
-import { ref, get, set } from "firebase/database";
+import { ref, get, set, update } from "firebase/database";
 import db from "./firebase";
 
 async function getData(root) {
@@ -16,4 +16,9 @@ async function postData(root, data) {
   await set(ref_, data);
 }
 
-export { getData, postData };
+async function updateData(root, data) {
+  const ref_ = ref(db, root);
+  await update(ref_, data);
+}
+
+export { getData, postData, updateData };

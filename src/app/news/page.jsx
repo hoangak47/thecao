@@ -15,6 +15,7 @@ Thông thường băng ở hai bên có các cạnh bị cắt không được b
 };
 
 import dynamic from "next/dynamic";
+import Getdata from "./getdata";
 
 const CustomEditor = dynamic(() => import("@/components/custom-editor"), {
   ssr: false,
@@ -31,7 +32,7 @@ export default function Page({}) {
 
         <div className="w-full h-[1px] bg-[#000] my-10"></div>
         {/* <CustomEditor /> */}
-
+        <Getdata />
         <Partner />
       </Body>
     </Layout>
