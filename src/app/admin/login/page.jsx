@@ -2,7 +2,7 @@
 
 import { setAccount } from "@/lib/features/account";
 import { useAppDispatch } from "@/lib/hooks";
-import { getData } from "@/services";
+import { getData, saveToSessionStorage } from "@/services";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { FiMail, FiLock, FiEye, FiEyeOff } from "react-icons/fi";
@@ -30,8 +30,8 @@ const Page = () => {
     getData("/admin").then((data) => {
       console.log(data.id, formData.id, data.pass, formData.password);
       if (data.id === formData.id && data.pass === formData.password) {
-        dispatch(setAccount(data));
-        router.push("/admin");
+        saveToSessionStorage("login", true);
+        router.push("/admin/PVC");
       }
     });
   };

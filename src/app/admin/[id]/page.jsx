@@ -1,11 +1,13 @@
 "use client";
 
-import { getData, updateData } from "@/services";
+import { addData, deleteData, getData, updateData } from "@/services";
 import Image from "next/image";
+import { useParams, usePathname } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { FiEdit2, FiTrash2, FiSave, FiPlus } from "react-icons/fi";
 
 const AdminProductList = () => {
+  const ref = useParams().id || "PVC";
   const [editMode, setEditMode] = useState({});
   const [editedProduct, setEditedProduct] = useState({});
 
@@ -28,19 +30,24 @@ const AdminProductList = () => {
     );
     setEditMode((prev) => ({ ...prev, [productId]: false }));
 
+    const root = `products/${ref}/data`;
+
+    const updatedProduct = editedProduct[productId];
+
+    await updateData(root, productId, updatedProduct);
+  };
+
+  const handleDelete = async (productId) => {
+    setData((prev) => prev.filter((product) => product.id !== productId));
+
+    setEditMode((prev) => ({ ...prev, [productId]: false }));
+
     const index = data.findIndex((product) => product.id === productId);
 
     if (index !== -1) {
-      const root = `products/PVC/data/${index}`;
-
-      const updatedProduct = editedProduct[productId];
-
-      await updateData(root, updatedProduct);
+      const root = `products/${ref}/data/`;
+      await deleteData(root, productId);
     }
-  };
-
-  const handleDelete = (productId) => {
-    setData((prev) => prev.filter((product) => product.id !== productId));
   };
 
   const handleFieldChange = (productId, field, value) => {
@@ -67,7 +74,7 @@ const AdminProductList = () => {
     });
   };
 
-  const addNewProduct = () => {
+  const addNewProduct = async () => {
     const newProduct = {
       id: Date.now(),
       img: "https://images.unsplash.com/photo-1581591524425-c7e0978865fc",
@@ -78,8 +85,11 @@ const AdminProductList = () => {
       productTypeID: 0,
       type: 1,
     };
-    // console.log(newProduct);
+
     setData((prev) => [...prev, newProduct]);
+
+    const root = `products/${ref}/data/${newProduct.id}`;
+    await addData(root, newProduct);
   };
 
   const addNewInfo = (productId) => {
@@ -87,7 +97,7 @@ const AdminProductList = () => {
       ...prev,
       [productId]: {
         ...prev[productId],
-        info: [...prev[productId].info, "New Feature"],
+        info: ["New Feature", ...prev[productId].info],
       },
     }));
   };
@@ -108,9 +118,9 @@ const AdminProductList = () => {
 
   const [data, setData] = React.useState([]);
   useEffect(() => {
-    getData(`products/PVC/data`)
+    getData(`products/${ref}/data`)
       .then((data) => {
-        setData(data || []);
+        setData(Object.values(data) || []);
       })
       .catch((error) => {
         return error;
@@ -118,7 +128,7 @@ const AdminProductList = () => {
   }, []);
 
   return (
-    <div className="container mx-auto p-6">
+    <div className="container mx-auto p-6 max-w-7xl">
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-2xl font-bold text-gray-800">Product Management</h1>
         <button

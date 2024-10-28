@@ -14,7 +14,7 @@ export function GetData() {
   useEffect(() => {
     getData(`products/${id}/data`)
       .then((data) => {
-        setData(data || []);
+        setData(Object.values(data) || []);
       })
       .catch((error) => {
         return error;
@@ -33,7 +33,6 @@ export function GetData() {
                 `@/assets/images/${id === "PU" || id === "TPU" ? "PVC" : id}/${item.img.split("/")[4]}`
               );
 
-          console.log(index, imageSrc);
           return (
             <div
               key={index}
@@ -42,7 +41,7 @@ export function GetData() {
               <Modal setCurrentIndex={setCurrentIndex}>
                 <Image
                   src={imageSrc}
-                  alt=""
+                  alt={item.name}
                   className="w-full h-full object-contain"
                   width={500}
                   height={500}

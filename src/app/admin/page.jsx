@@ -2,33 +2,24 @@
 "use client";
 
 import React from "react";
-import { useAppSelector, useAppDispatch, useAppStore } from "@/lib/hooks";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import {
-  FiMenu,
-  FiX,
-  FiChevronDown,
-  FiUser,
-  FiSettings,
-  FiLogOut,
-} from "react-icons/fi";
+import { FiMenu, FiX, FiChevronDown, FiLogOut } from "react-icons/fi";
 
 import "./style.css";
-import PVC from "./pvc";
+import { getFromSessionStorage } from "@/services";
+import AdminProductList from "./[id]/page";
 
 export default function Admin() {
   const router = useRouter();
-  //   const store = useAppStore();
-  const account = useAppSelector((state) => state.account);
-  const dispatch = useAppDispatch();
 
   React.useEffect(() => {
-    if (account.id === null) {
+    const test = getFromSessionStorage("login");
+
+    if (!test) {
       router.push("/admin/login");
     }
-  }, [account.id, router]);
-
+  }, []);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
@@ -101,14 +92,14 @@ export default function Admin() {
           </header>
         </div>
       </div>
-      <PVC />
+      <AdminProductList />
     </div>
   );
 }
 
 function LeftSidebar({ isSidebarOpen, toggleSidebar }) {
   const navLinks = [
-    { href: "/admin/", label: "PVC" },
+    { href: "/admin/PVC", label: "PVC" },
     { href: "/admin/PU", label: "PU" },
     { href: "/admin/TPU", label: "TPU" },
     { href: "#", label: "Chịu Nhiệt" },
