@@ -1,6 +1,12 @@
 "use client";
 
-import { addData, deleteData, getData, updateData } from "@/services";
+import {
+  addData,
+  deleteData,
+  getData,
+  getFromSessionStorage,
+  updateData,
+} from "@/services";
 import Image from "next/image";
 import { useParams, usePathname } from "next/navigation";
 import React, { useEffect, useState } from "react";
@@ -118,13 +124,17 @@ const AdminProductList = () => {
 
   const [data, setData] = React.useState([]);
   useEffect(() => {
-    getData(`products/${ref}/data`)
-      .then((data) => {
-        setData(Object.values(data) || []);
-      })
-      .catch((error) => {
-        return error;
-      });
+    const test = getFromSessionStorage("login");
+
+    if (test) {
+      getData(`products/${ref}/data`)
+        .then((data) => {
+          setData(Object.values(data) || []);
+        })
+        .catch((error) => {
+          return error;
+        });
+    }
   }, []);
 
   return (
