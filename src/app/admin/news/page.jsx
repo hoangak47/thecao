@@ -1,10 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FiEdit2, FiTrash2, FiEye, FiCheck, FiX } from "react-icons/fi";
 import { BsFilter, BsSearch } from "react-icons/bs";
 import CkeditorComponent from "@/components/CkeditorComponent";
+import { addData, getData, getFromSessionStorage } from "@/services";
 
 const News = () => {
   const [posts, setPosts] = useState([]);
@@ -13,29 +14,57 @@ const News = () => {
   const [showForm, setShowForm] = useState(false);
   const [formData, setFormData] = useState({
     title: "",
-    description: "",
-    category: "",
+    summary: "",
     image: null,
     imagePreview: null,
   });
 
-  const categories = ["Tutorial", "Guide", "News", "Update"];
-
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
-      setFormData({
-        ...formData,
-        image: file,
-        imagePreview: URL.createObjectURL(file),
-      });
+      // Tạo một đối tượng FileReader
+      const reader = new FileReader();
+
+      // Định nghĩa hàm callback khi file được đọc thành công
+      reader.onloadend = () => {
+        setFormData({
+          ...formData,
+          image: file,
+          imagePreview: reader.result, // Lưu chuỗi base64
+        });
+      };
+
+      // Đọc file dưới dạng Data URL (base64)
+      reader.readAsDataURL(file);
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission logic here
-    setShowForm(false);
+    // Logic to save the post, including the title, summary, and editorData
+    const newPost = {
+      id: Date.now(),
+      title: formData.title,
+      summary: formData.summary,
+      image: formData.imagePreview,
+      content: editorData,
+      status: "Published", // or "Published" based on your logic
+    };
+
+    try {
+      await addData(`news/${newPost.id}`, newPost); // Gọi hàm addData với đường dẫn "news/"
+      // Reset form sau khi thêm thành công
+      setShowForm(false);
+      setFormData({
+        title: "",
+        summary: "",
+        image: null,
+        imagePreview: null,
+      });
+      setEditorData("");
+    } catch (error) {
+      console.error("Error adding data: ", error);
+    }
   };
 
   const togglePostSelection = (postId) => {
@@ -50,8 +79,22 @@ const News = () => {
     setPosts((prev) => prev.filter((post) => !selectedPosts.includes(post.id)));
     setSelectedPosts([]);
   };
-
   const [editorData, setEditorData] = useState("");
+  const [indexEdit, setIndexEdit] = useState(null);
+
+  useEffect(() => {
+    const test = getFromSessionStorage("login");
+
+    if (test) {
+      getData(`news`)
+        .then((data) => {
+          setPosts(Object.values(data) || []);
+        })
+        .catch((error) => {
+          return error;
+        });
+    }
+  }, []);
 
   return (
     <div className="min-h-screen bg-gray-100 p-4">
@@ -92,17 +135,6 @@ const News = () => {
                 className="w-full pl-10 pr-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               />
             </div>
-            <select
-              className="px-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-              aria-label="Filter by category"
-            >
-              <option value="">All Categories</option>
-              {categories.map((category) => (
-                <option key={category} value={category}>
-                  {category}
-                </option>
-              ))}
-            </select>
           </div>
         </div>
 
@@ -122,17 +154,14 @@ const News = () => {
                   <th className="p-4 text-left">Image</th>
                   <th className="p-4 text-left">Title</th>
                   <th className="p-4 text-left hidden md:table-cell">
-                    Description
-                  </th>
-                  <th className="p-4 text-left hidden lg:table-cell">
-                    Category
+                    Summary
                   </th>
                   <th className="p-4 text-left hidden lg:table-cell">Status</th>
                   <th className="p-4 text-left">Actions</th>
                 </tr>
               </thead>
               <tbody>
-                {posts.map((post) => (
+                {posts.map((post, index) => (
                   <tr key={post.id} className="border-t hover:bg-gray-50">
                     <td className="p-4">
                       <input
@@ -150,12 +179,7 @@ const News = () => {
                       />
                     </td>
                     <td className="p-4 font-medium">{post.title}</td>
-                    <td className="p-4 hidden md:table-cell">
-                      {post.description}
-                    </td>
-                    <td className="p-4 hidden lg:table-cell">
-                      {post.category}
-                    </td>
+                    <td className="p-4 hidden md:table-cell">{post.summary}</td>
                     <td className="p-4 hidden lg:table-cell">
                       <span
                         className={`px-2 py-1 rounded-full text-sm ${post.status === "Published" ? "bg-green-100 text-green-800" : "bg-yellow-100 text-yellow-800"}`}
@@ -168,6 +192,10 @@ const News = () => {
                         <button
                           className="p-2 hover:bg-gray-100 rounded-full"
                           aria-label="Edit post"
+                          onClick={() => {
+                            setIndexEdit(index);
+                            setShowForm(true);
+                          }}
                         >
                           <FiEdit2 className="w-5 h-5 text-blue-600" />
                         </button>
@@ -189,7 +217,7 @@ const News = () => {
         {/* Add/Edit Form Modal */}
         {showForm && (
           <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4">
-            <div className="bg-white rounded-lg max-w-2xl w-full p-6">
+            <div className="bg-white rounded-lg max-w-4xl w-full p-6 h-screen overflow-y-auto">
               <div className="flex justify-between items-center mb-6">
                 <h2 className="text-xl font-bold">Add New Post</h2>
                 <button
@@ -238,7 +266,11 @@ const News = () => {
                   <label className="block mb-2 font-medium">Title</label>
                   <input
                     type="text"
-                    value={formData.title}
+                    value={
+                      indexEdit !== null
+                        ? posts[indexEdit].title
+                        : formData.title
+                    }
                     onChange={(e) =>
                       setFormData({ ...formData, title: e.target.value })
                     }
@@ -247,44 +279,31 @@ const News = () => {
                   />
                 </div>
 
-                <CkeditorComponent
-                  data={editorData}
-                  onChange={(data) => setEditorData(data)}
-                />
                 <div>
-                  <h2>Nội dung Editor</h2>
-                  <div dangerouslySetInnerHTML={{ __html: editorData }} />
-                </div>
-
-                <div>
-                  <label className="block mb-2 font-medium">Description</label>
-                  <textarea
-                    value={formData.description}
-                    onChange={(e) =>
-                      setFormData({ ...formData, description: e.target.value })
+                  <label className="block mb-2 font-medium">Summary</label>
+                  <input
+                    type="text"
+                    value={
+                      indexEdit !== null
+                        ? posts[indexEdit].summary
+                        : formData.summary
                     }
-                    className="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 h-32"
+                    onChange={(e) =>
+                      setFormData({ ...formData, summary: e.target.value })
+                    }
+                    className="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                     required
                   />
                 </div>
 
                 <div>
-                  <label className="block mb-2 font-medium">Category</label>
-                  <select
-                    value={formData.category}
-                    onChange={(e) =>
-                      setFormData({ ...formData, category: e.target.value })
+                  <label className="block mb-2 font-medium">Description</label>
+                  <CkeditorComponent
+                    data={
+                      indexEdit !== null ? posts[indexEdit].content : editorData
                     }
-                    className="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                    required
-                  >
-                    <option value="">Select Category</option>
-                    {categories.map((category) => (
-                      <option key={category} value={category}>
-                        {category}
-                      </option>
-                    ))}
-                  </select>
+                    onChange={(data) => setEditorData(data)}
+                  />
                 </div>
 
                 <div className="flex justify-end gap-4">
