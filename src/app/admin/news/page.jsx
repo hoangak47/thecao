@@ -304,6 +304,7 @@ const News = () => {
                     }
                     onChange={(data) => setEditorData(data)}
                   />
+                  <div dangerouslySetInnerHTML={{ __html: editorData }} />
                 </div>
 
                 <div className="flex justify-end gap-4">

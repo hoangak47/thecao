@@ -3,7 +3,6 @@
 
 import React from "react";
 import { useRouter } from "next/navigation";
-import { FiX } from "react-icons/fi";
 
 import "./style.css";
 import { getFromSessionStorage } from "@/services";

@@ -174,3 +174,25 @@ button:hover {
 button svg {
   margin-right: 5px; /* Khoảng cách giữa icon và text */
 }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+li,
+blockquote,
+pre,
+code {
+  margin: revert;
+  padding: revert;
+  font-size: revert;
+  font-weight: revert;
+  font-family: revert;
+  line-height: revert;
+  color: revert;
+}
