@@ -5,18 +5,24 @@ import React, { useEffect, useState } from "react";
 import { FiEdit2, FiTrash2, FiEye, FiCheck, FiX } from "react-icons/fi";
 import { BsFilter, BsSearch } from "react-icons/bs";
 import CkeditorComponent from "@/components/CkeditorComponent";
-import { addData, getData, getFromSessionStorage } from "@/services";
+import {
+  addData,
+  deleteData,
+  getData,
+  getFromSessionStorage,
+  updateData,
+} from "@/services";
 
 const News = () => {
   const [posts, setPosts] = useState([]);
 
-  const [selectedPosts, setSelectedPosts] = useState([]);
   const [showForm, setShowForm] = useState(false);
   const [formData, setFormData] = useState({
     title: "",
     summary: "",
     image: null,
     imagePreview: null,
+    link: "",
   });
 
   const handleImageChange = (e) => {
@@ -41,46 +47,73 @@ const News = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // Logic to save the post, including the title, summary, and editorData
-    const newPost = {
-      id: Date.now(),
-      title: formData.title,
-      summary: formData.summary,
-      image: formData.imagePreview,
-      content: editorData,
-      status: "Published", // or "Published" based on your logic
-    };
 
-    try {
-      await addData(`news/${newPost.id}`, newPost); // Gọi hàm addData với đường dẫn "news/"
-      // Reset form sau khi thêm thành công
-      setShowForm(false);
-      setFormData({
-        title: "",
-        summary: "",
-        image: null,
-        imagePreview: null,
-      });
-      setEditorData("");
-    } catch (error) {
-      console.error("Error adding data: ", error);
+    if (!formData.id) {
+      const newPost = {
+        id: Date.now(),
+        title: formData.title,
+        summary: formData.summary,
+        image: formData.imagePreview,
+        content: editorData,
+        status: "Published", // or "Published" based on your logic
+        link: generateSlug(formData.title),
+      };
+
+      try {
+        await addData(`news/${newPost.id}`, newPost); // Gọi hàm addData với đường dẫn "news/"
+        // Reset form sau khi thêm thành công
+        setShowForm(false);
+        setFormData({
+          title: "",
+          summary: "",
+          image: null,
+          imagePreview: null,
+          link: "",
+        });
+        setEditorData("");
+
+        setPosts((prev) => [newPost, ...prev]);
+      } catch (error) {
+        console.error("Error adding data: ", error);
+      }
+    } else {
+      const newPost = {
+        title: formData.title,
+        summary: formData.summary,
+        image: formData.imagePreview || formData.image,
+        content: editorData,
+        status: "Published", // or "Published" based on your logic
+        link: generateSlug(formData.title),
+      };
+
+      try {
+        await updateData(`news`, formData.id, newPost); // Gọi hàm addData với đường dẫn "news/"
+        setShowForm(false);
+        setFormData({
+          title: "",
+          summary: "",
+          image: null,
+          imagePreview: null,
+          link: "",
+        });
+        setEditorData("");
+
+        setPosts((prev) =>
+          prev.map((post) => (post.id === formData.id ? newPost : post))
+        );
+      } catch (error) {
+        console.error("Error adding data: ", error);
+      }
     }
   };
 
-  const togglePostSelection = (postId) => {
-    setSelectedPosts((prev) =>
-      prev.includes(postId)
-        ? prev.filter((id) => id !== postId)
-        : [...prev, postId]
-    );
+  const handleDelete = (postId) => {
+    setPosts((prev) => prev.filter((post) => post.id !== postId));
+
+    deleteData(`news`, postId);
   };
 
-  const handleBulkDelete = () => {
-    setPosts((prev) => prev.filter((post) => !selectedPosts.includes(post.id)));
-    setSelectedPosts([]);
-  };
   const [editorData, setEditorData] = useState("");
-  const [indexEdit, setIndexEdit] = useState(null);
 
   useEffect(() => {
     const test = getFromSessionStorage("login");
@@ -113,15 +146,6 @@ const News = () => {
               >
                 Add New Post
               </button>
-              {selectedPosts.length > 0 && (
-                <button
-                  onClick={handleBulkDelete}
-                  className="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 transition-colors"
-                  aria-label="Delete selected posts"
-                >
-                  Delete Selected ({selectedPosts.length})
-                </button>
-              )}
             </div>
           </div>
 
@@ -144,13 +168,6 @@ const News = () => {
             <table className="w-full">
               <thead className="bg-gray-50">
                 <tr>
-                  <th className="w-8 p-4">
-                    <input
-                      type="checkbox"
-                      className="rounded"
-                      onChange={() => {}}
-                    />
-                  </th>
                   <th className="p-4 text-left">Image</th>
                   <th className="p-4 text-left">Title</th>
                   <th className="p-4 text-left hidden md:table-cell">
@@ -162,15 +179,7 @@ const News = () => {
               </thead>
               <tbody>
                 {posts.map((post, index) => (
-                  <tr key={post.id} className="border-t hover:bg-gray-50">
-                    <td className="p-4">
-                      <input
-                        type="checkbox"
-                        checked={selectedPosts.includes(post.id)}
-                        onChange={() => togglePostSelection(post.id)}
-                        className="rounded"
-                      />
-                    </td>
+                  <tr key={index} className="border-t hover:bg-gray-50">
                     <td className="p-4">
                       <img
                         src={post.image}
@@ -193,8 +202,9 @@ const News = () => {
                           className="p-2 hover:bg-gray-100 rounded-full"
                           aria-label="Edit post"
                           onClick={() => {
-                            setIndexEdit(index);
                             setShowForm(true);
+                            setFormData(post);
+                            setEditorData(post.content);
                           }}
                         >
                           <FiEdit2 className="w-5 h-5 text-blue-600" />
@@ -202,6 +212,7 @@ const News = () => {
                         <button
                           className="p-2 hover:bg-gray-100 rounded-full"
                           aria-label="Delete post"
+                          onClick={() => handleDelete(post.id)}
                         >
                           <FiTrash2 className="w-5 h-5 text-red-600" />
                         </button>
@@ -221,7 +232,17 @@ const News = () => {
               <div className="flex justify-between items-center mb-6">
                 <h2 className="text-xl font-bold">Add New Post</h2>
                 <button
-                  onClick={() => setShowForm(false)}
+                  onClick={() => {
+                    setShowForm(false);
+                    setFormData({
+                      title: "",
+                      summary: "",
+                      image: null,
+                      imagePreview: null,
+                      link: "",
+                    });
+                    setEditorData("");
+                  }}
                   className="p-2 hover:bg-gray-100 rounded-full"
                   aria-label="Close form"
                 >
@@ -234,9 +255,9 @@ const News = () => {
                   <label className="block mb-2 font-medium">Image</label>
                   <div className="flex items-center gap-4">
                     <div className="relative w-32 h-32 border-2 border-dashed rounded-lg overflow-hidden">
-                      {formData.imagePreview ? (
+                      {formData.imagePreview || formData.image ? (
                         <img
-                          src={formData.imagePreview}
+                          src={formData.imagePreview || formData.image}
                           alt="Preview"
                           className="w-full h-full object-cover"
                         />
@@ -266,11 +287,7 @@ const News = () => {
                   <label className="block mb-2 font-medium">Title</label>
                   <input
                     type="text"
-                    value={
-                      indexEdit !== null
-                        ? posts[indexEdit].title
-                        : formData.title
-                    }
+                    value={formData.title}
                     onChange={(e) =>
                       setFormData({ ...formData, title: e.target.value })
                     }
@@ -283,11 +300,7 @@ const News = () => {
                   <label className="block mb-2 font-medium">Summary</label>
                   <input
                     type="text"
-                    value={
-                      indexEdit !== null
-                        ? posts[indexEdit].summary
-                        : formData.summary
-                    }
+                    value={formData.summary}
                     onChange={(e) =>
                       setFormData({ ...formData, summary: e.target.value })
                     }
@@ -299,18 +312,25 @@ const News = () => {
                 <div>
                   <label className="block mb-2 font-medium">Description</label>
                   <CkeditorComponent
-                    data={
-                      indexEdit !== null ? posts[indexEdit].content : editorData
-                    }
+                    data={editorData}
                     onChange={(data) => setEditorData(data)}
                   />
-                  <div dangerouslySetInnerHTML={{ __html: editorData }} />
                 </div>
 
                 <div className="flex justify-end gap-4">
                   <button
                     type="button"
-                    onClick={() => setShowForm(false)}
+                    onClick={() => {
+                      setShowForm(false);
+                      setFormData({
+                        title: "",
+                        summary: "",
+                        image: null,
+                        imagePreview: null,
+                        link: "",
+                      });
+                      setEditorData("");
+                    }}
                     className="px-4 py-2 border rounded-md hover:bg-gray-50"
                   >
                     Cancel
@@ -330,5 +350,14 @@ const News = () => {
     </div>
   );
 };
+
+function generateSlug(title) {
+  return title
+    .toLowerCase() // Chuyển tất cả thành chữ thường
+    .trim() // Loại bỏ khoảng trắng đầu và cuối
+    .replace(/[^a-z0-9\s-]/g, "") // Loại bỏ ký tự đặc biệt, chỉ giữ lại chữ, số và khoảng trắng
+    .replace(/\s+/g, "-") // Thay khoảng trắng thành dấu gạch ngang
+    .replace(/-+/g, "-"); // Loại bỏ dấu gạch ngang liên tiếp
+}
 
 export default News;

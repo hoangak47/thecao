@@ -8,18 +8,6 @@ export default function CkeditorComponent({ data, onChange }) {
   const editorRef = useRef(null);
   const [isLayoutReady, setIsLayoutReady] = useState(false);
 
-  const [editorLoaded, setEditorLoaded] = useState(false);
-  const { CKEditor, ClassicEditor } = editorRef.current || {};
-
-  useEffect(() => {
-    editorRef.current = {
-      // CKEditor: require('@ckeditor/ckeditor5-react'), // depricated in v3
-      CKEditor: require("@ckeditor/ckeditor5-react").CKEditor,
-      ClassicEditor: require("@ckeditor/ckeditor5-build-classic"),
-    };
-    setEditorLoaded(true);
-  }, []);
-
   useEffect(() => {
     setIsLayoutReady(true);
     return () => setIsLayoutReady(false);
@@ -40,7 +28,6 @@ export default function CkeditorComponent({ data, onChange }) {
         "link",
         "insertImage",
         "insertTable",
-        "blockQuote",
         "|",
         "bulletedList",
         "numberedList",
@@ -103,9 +90,6 @@ export default function CkeditorComponent({ data, onChange }) {
           class: "ck-heading_heading6",
         },
       ],
-    },
-    htmlSupport: {
-      allow: [{ name: /^.*$/, styles: true, attributes: true, classes: true }],
     },
     image: {
       toolbar: [
@@ -175,9 +159,9 @@ export default function CkeditorComponent({ data, onChange }) {
         >
           <div className="editor-container__editor">
             <div ref={editorRef}>
-              {isLayoutReady && editorLoaded && (
+              {isLayoutReady && (
                 <CKEditor
-                  editor={ClassicEditor}
+                  editor={require("@ckeditor/ckeditor5-build-classic")}
                   config={editorConfig}
                   data={data}
                   onChange={(event, editor) => onChange(editor.getData())}
