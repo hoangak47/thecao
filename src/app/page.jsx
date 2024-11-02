@@ -163,7 +163,7 @@ const Products = () => (
 
 const Industry = () => (
   <section className="flex flex-col mt-20">
-    <h1 className="text-4xl font-medium mt-5 text-center m-5">
+    <h1 className="text-2xl md:text-4xl font-medium mt-5 text-center m-5">
       NGÀNH NGHỀ ỨNG DỤNG
     </h1>
     <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
@@ -284,7 +284,7 @@ export default function Home() {
         <Rate />
         <Partner partner={true}>
           <h1 className="md:block hidden">
-            <p className="text-4xl font-medium mt-5 text-center m-5">
+            <p className="text-2xl md:text-4xl font-medium mt-5 text-center m-5">
               Đối tác với{" "}
               <span className="text-[--color-primary]">Thế Cao</span>
             </p>
@@ -292,14 +292,14 @@ export default function Home() {
         </Partner>
         <Partner>
           <h1 className="md:block hidden">
-            <p className="text-4xl font-medium mt-5 text-center m-5">
+            <p className="text-2xl md:text-4xl font-medium mt-5 text-center m-5">
               Khách hàng hợp tác với{" "}
               <span className="text-[--color-primary]">Thế Cao</span>
             </p>
           </h1>
         </Partner>
         <section className="flex flex-col mt-20">
-          <h1 className="text-4xl font-medium mt-5 text-center m-5">
+          <h1 className="text-2xl md:text-4xl font-medium mt-5 text-center m-5">
             {posts && "BLOGS"}
           </h1>
           <div className="flex mt-10 md:flex-row flex-col">
