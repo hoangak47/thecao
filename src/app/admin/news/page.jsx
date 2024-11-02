@@ -321,7 +321,10 @@ const News = () => {
                     data={editorData}
                     onChange={(data) => setEditorData(data)}
                   /> */}
-                  <App />
+                  <App
+                    data={editorData}
+                    onChange={(data) => setEditorData(data)}
+                  />
                 </div>
 
                 <div className="flex justify-end gap-4">
