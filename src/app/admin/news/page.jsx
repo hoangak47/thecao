@@ -4,7 +4,7 @@
 import React, { useEffect, useState } from "react";
 import { FiEdit2, FiTrash2, FiEye, FiCheck, FiX } from "react-icons/fi";
 import { BsFilter, BsSearch } from "react-icons/bs";
-import CkeditorComponent from "@/components/CkeditorComponent";
+// import CkeditorComponent from "@/components/CkeditorComponent";
 import {
   addData,
   deleteData,
@@ -12,7 +12,13 @@ import {
   getFromSessionStorage,
   updateData,
 } from "@/services";
-import App from "@/components/CkeditorComponent2";
+// import App from "@/components/CkeditorComponent2";
+
+import dynamic from "next/dynamic";
+
+const App = dynamic(() => import("@/components/CkeditorComponent2"), {
+  ssr: false,
+});
 
 const News = () => {
   const [posts, setPosts] = useState([]);
@@ -312,11 +318,14 @@ const News = () => {
 
                 <div>
                   <label className="block mb-2 font-medium">Description</label>
-                  <CkeditorComponent
+                  {/* <CkeditorComponent
+                    data={editorData}
+                    onChange={(data) => setEditorData(data)}
+                  /> */}
+                  <App
                     data={editorData}
                     onChange={(data) => setEditorData(data)}
                   />
-                  <App />
                 </div>
 
                 <div className="flex justify-end gap-4">
