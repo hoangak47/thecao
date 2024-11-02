@@ -247,17 +247,31 @@ const Rate = () => (
 );
 
 import { useEffect, useState } from "react";
-import { getData } from "@/services";
 import { industry } from "@/constants/header/header";
+import { useAppDispatch, useAppSelector } from "@/lib/hooks";
+import { setPosts } from "@/lib/features/posts";
+import { getData } from "@/services";
+import { formatTimestamp } from "./news/getdata";
 
 export default function Home() {
-  const [getData_, setData] = useState([]);
+  // const [posts, setData] = useState([]);
+
+  // useEffect(() => {
+  //   getData("/blogs").then((data) => {
+  //     setData(Object.values(data).reverse());
+  //   });
+  // }, []);
+
+  const dispatch = useAppDispatch();
+  const posts = useAppSelector((state) => state.posts);
 
   useEffect(() => {
-    getData("/blogs").then((data) => {
-      setData(Object.values(data).reverse());
-    });
-  }, []);
+    if (posts === null) {
+      getData("/news").then((data) => {
+        dispatch(setPosts(Object.values(data).reverse()));
+      });
+    }
+  }, [dispatch, posts]);
 
   return (
     <Layout>
@@ -269,7 +283,7 @@ export default function Home() {
         <Industry />
         <Rate />
         <Partner partner={true}>
-          <h1>
+          <h1 className="md:block hidden">
             <p className="text-4xl font-medium mt-5 text-center m-5">
               Đối tác với{" "}
               <span className="text-[--color-primary]">Thế Cao</span>
@@ -277,7 +291,7 @@ export default function Home() {
           </h1>
         </Partner>
         <Partner>
-          <h1>
+          <h1 className="md:block hidden">
             <p className="text-4xl font-medium mt-5 text-center m-5">
               Khách hàng hợp tác với{" "}
               <span className="text-[--color-primary]">Thế Cao</span>
@@ -285,12 +299,17 @@ export default function Home() {
           </h1>
         </Partner>
         <section className="flex flex-col mt-20">
-          <h1 className="text-4xl font-medium mt-5 text-center m-5">BLOGS</h1>
+          <h1 className="text-4xl font-medium mt-5 text-center m-5">
+            {posts && "BLOGS"}
+          </h1>
           <div className="flex mt-10 md:flex-row flex-col">
-            <div className="flex-1 flex flex-col p-5">
-              {getData_[0]?.images[0]?.img && (
+            <Link
+              href={`/news/${posts && posts[0]?.link}`}
+              className="flex-1 flex flex-col p-5"
+            >
+              {posts && posts.length > 0 && posts[0]?.image && (
                 <Image
-                  src={getData_[0]?.images[0]?.img}
+                  src={posts[0]?.image}
                   alt={"as"}
                   className="object-contain aspect-4/3 w-full"
                   width={500}
@@ -299,25 +318,25 @@ export default function Home() {
               )}
 
               <h1 className="text-2xl font-medium mt-5 line-clamp-2">
-                {getData_[0]?.title}
+                {posts && posts[0]?.title}
               </h1>
               <p className="text-base mt-1 text-[--color-gray] line-clamp-2">
-                {getData_[0]?.summary}
+                {posts && posts[0]?.summary}
               </p>
-              {/* day */}
               <p className="text-base mt-1 text-[--color-gray]">
-                Monday 23, 2023
+                {posts && formatTimestamp(posts[0]?.id)}
               </p>
-            </div>
+            </Link>
             <div className="flex-1 flex flex-col ml-5">
-              {getData_.slice(1, 4).map((item, index) => (
-                <div
+              {posts?.slice(1, 4).map((item, index) => (
+                <Link
+                  href={`/news/${item.link}`}
                   key={index}
                   className="flex flex-col hover:bg-gray-100 md:px-5 py-5 rounded-md cursor-pointer"
                 >
                   <div className="flex">
                     <Image
-                      src={item.images[0]?.img}
+                      src={item.image}
                       alt={"as"}
                       className="object-contain aspect-4/3 md:w-[200px] w-[100px] rounded-md"
                       width={500}
@@ -330,13 +349,12 @@ export default function Home() {
                       <p className="md:text-base text-sm mt-1 text-[--color-gray] line-clamp-2">
                         {item.summary}
                       </p>
-                      {/* day */}
                       <p className="text-base mt-1 text-[--color-gray] md:block hidden">
-                        Monday 23, 2023
+                        {formatTimestamp(item.id)}
                       </p>
                     </div>
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
           </div>

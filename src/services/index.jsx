@@ -11,6 +11,26 @@ async function getData(root) {
   }
 }
 
+async function findPostByLink(root, targetLink) {
+  const data = await getData(root);
+
+  // Kiểm tra nếu có dữ liệu trả về
+  if (data !== "No data available") {
+    // Tìm đối tượng có `link` bằng `targetLink`
+    const post = Object.values(data).find((item) => item.link === targetLink);
+
+    if (post) {
+      return post;
+    } else {
+      console.log("No post found with the specified link.");
+      return null;
+    }
+  } else {
+    console.log("No data available in the specified root.");
+    return null;
+  }
+}
+
 async function postData(root, data) {
   const ref_ = ref(db, root);
   await set(ref_, data);
@@ -79,4 +99,5 @@ export {
   deleteData,
   saveToSessionStorage,
   getFromSessionStorage,
+  findPostByLink,
 };

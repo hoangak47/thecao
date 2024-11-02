@@ -41,7 +41,7 @@ export default function Page({}) {
 
         <div className="w-full h-[1px] bg-[#000] my-10"></div>
         <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31343.807993809685!2d106.5982416743164!3d10.889428400000005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3174d76f4c1da9e9%3A0x3be48d475c70e47a!2zQ8O0bmcgdHkgVE5ISCBNVFYgVGjhur8gQ2Fv!5e0!3m2!1svi!2s!4v1724565028275!5m2!1svi!2s"
+          src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d62687.61607181222!2d106.636351!3d10.889428!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3174d76f4c1da9e9%3A0x3be48d475c70e47a!2zQ8O0bmcgdHkgVE5ISCBNVFYgVGjhur8gQ2Fv!5e0!3m2!1svi!2sus!4v1730551286846!5m2!1svi!2sus"
           className="w-full h-96"
           style={{ border: 0 }}
           allowFullScreen=""

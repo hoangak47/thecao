@@ -101,3 +101,41 @@ p strong.blue {
 .not-scrollbar::-webkit-scrollbar {
   display: none;
 }
+
+.default h1,
+.default h2,
+.default h3,
+.default h4,
+.default h5,
+.default h6,
+.default p,
+.default ul,
+.default ol,
+.default li,
+.default blockquote,
+.default pre,
+.default code {
+  margin: revert;
+  padding: revert;
+  font-size: revert;
+  font-weight: revert;
+  font-family: revert;
+  line-height: revert;
+  color: revert;
+  text-align: revert;
+  text-decoration: revert;
+  list-style: revert;
+  border: revert;
+  border-radius: revert;
+  background: revert;
+  box-shadow: revert;
+  opacity: revert;
+  text-shadow: revert;
+  transition: revert;
+  transform: revert;
+  background-color: revert;
+  background-image: revert;
+  background-size: revert;
+  background-position: revert;
+  background-repeat: revert;
+}

@@ -55,7 +55,7 @@ export default function Footer() {
           <SVGmastercard width="100" height="50" />
         </div>
         <div className="col-span-2 text-center">
-          <span>www.thecaovn.com © 2023 Cty TNHH MTV THẾ CAO.</span>
+          <span>www.thecaovn.com © 2024 Cty TNHH MTV THẾ CAO.</span>
           <br />
           <span>Tất cả các quyền được bảo hộ.</span>
         </div>
