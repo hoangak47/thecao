@@ -90,11 +90,11 @@ function LeftSidebar({ isSidebarOpen, toggleSidebar }) {
     { href: "/admin/PVC", label: "PVC" },
     { href: "/admin/PU", label: "PU" },
     { href: "/admin/TPU", label: "TPU" },
-    { href: "#", label: "Chịu Nhiệt" },
-    { href: "#", label: "Xích Nhựa" },
-    { href: "#", label: "PU Răng" },
-    { href: "#", label: "Truyền Động" },
-    { href: "#", label: "Nẹp" },
+    // { href: "#", label: "Chịu Nhiệt" },
+    // { href: "#", label: "Xích Nhựa" },
+    // { href: "#", label: "PU Răng" },
+    // { href: "#", label: "Truyền Động" },
+    // { href: "#", label: "Nẹp" },
     { href: "/admin/news", label: "Bài Viết" },
   ];
   return (
