@@ -15,7 +15,6 @@ export function GetDataCareer() {
   useEffect(() => {
     getData(`${id}/data`)
       .then((data) => {
-        // console.log(data);
         setData(data || []);
       })
       .catch((error) => {

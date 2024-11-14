@@ -97,23 +97,31 @@ const partners = [
   },
 ];
 
-export default function Partner({ partner = false, children }) {
+export default function Partner({
+  partner = false,
+  children,
+  className = "",
+  slidesPerView = null,
+  data = null,
+}) {
   const width = useWindowSize().width;
 
   return (
-    <section className="flex flex-col mt-20 md:h-[200px] h-[100px]">
+    <section className={`flex flex-col md:h-[200px] h-[100px] ${className}`}>
       {children}
       <Swiper
         slidesPerView={
-          width > 768
-            ? 6
-            : width > 640
-              ? 4
-              : width > 480
-                ? 3
-                : width > 320
-                  ? 2
-                  : 6
+          slidesPerView
+            ? slidesPerView
+            : width > 768
+              ? 6
+              : width > 640
+                ? 4
+                : width > 480
+                  ? 3
+                  : width > 320
+                    ? 2
+                    : 6
         }
         spaceBetween={20}
         loop={true}
@@ -125,25 +133,35 @@ export default function Partner({ partner = false, children }) {
         className="mySwiper"
       >
         {/* <SwiperSlide>Slide 1</SwiperSlide> */}
-        {partner === false
-          ? customer.map((partner, index) => (
+        {data
+          ? data.map((partner, index) => (
               <SwiperSlide key={index}>
                 <Image
                   src={partner.img}
                   alt={partner.title}
-                  className="!object-contain aspect-square w-full"
+                  className="object-contain aspect-square w-full"
                 />
               </SwiperSlide>
             ))
-          : partners.map((partner, index) => (
-              <SwiperSlide key={index}>
-                <Image
-                  src={partner.img}
-                  alt={partner.title}
-                  className="!object-contain aspect-square w-full"
-                />
-              </SwiperSlide>
-            ))}
+          : partner === false
+            ? customer.map((partner, index) => (
+                <SwiperSlide key={index}>
+                  <Image
+                    src={partner.img}
+                    alt={partner.title}
+                    className="!object-contain aspect-square w-full"
+                  />
+                </SwiperSlide>
+              ))
+            : partners.map((partner, index) => (
+                <SwiperSlide key={index}>
+                  <Image
+                    src={partner.img}
+                    alt={partner.title}
+                    className="!object-contain aspect-square w-full"
+                  />
+                </SwiperSlide>
+              ))}
       </Swiper>
     </section>
   );

@@ -282,7 +282,7 @@ export default function Home() {
         <Products />
         <Industry />
         <Rate />
-        <Partner partner={true}>
+        <Partner partner={true} className="mt-20">
           <h1 className="md:block hidden">
             <p className="text-2xl md:text-4xl font-medium mt-5 text-center m-5">
               Đối tác với{" "}
@@ -290,7 +290,7 @@ export default function Home() {
             </p>
           </h1>
         </Partner>
-        <Partner>
+        <Partner className="mt-20">
           <h1 className="md:block hidden">
             <p className="text-2xl md:text-4xl font-medium mt-5 text-center m-5">
               Khách hàng hợp tác với{" "}

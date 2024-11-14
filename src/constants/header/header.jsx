@@ -108,10 +108,94 @@ const menu = [
   {
     title: "Ngành nghề",
     link: "/Career",
+    children: [
+      {
+        title: "Ngành thực phẩm",
+        link: "/bang-tai-thuc-pham",
+      },
+      {
+        title: "Ngành sản xuất bánh xe",
+        link: "/bang-tai-san-xuat-banh-xe",
+      },
+      {
+        title: "Ngành hàng không",
+        link: "/bang-tai-nganh-hang-khong",
+      },
+      {
+        title: "Ngành gỗ",
+        link: "/bang-tai-nganh-go",
+      },
+      {
+        title: "Ngành bao bì",
+        link: "/bang-tai-nganh-bao-bi",
+      },
+      {
+        title: "Ngành in ấn, may mặc",
+        link: "/bang-tai-nganh-may-mac",
+      },
+      {
+        title: "Ngành điện tử",
+        link: "/bang-tai-nganh-dien-tu",
+      },
+      {
+        title: "Ngành thuốc lá",
+        link: "/bang-tai-thuoc-la",
+      },
+      {
+        title: "Ngành đá Granite",
+        link: "/bang-tai-nganh-da-granite",
+      },
+      {
+        title: "Ngành thủy sản",
+        link: "/bang-tai-che-bien-thuy-san",
+      },
+      {
+        title: "Ngành tôn thép",
+        link: "/bang-tai-nganh-ton-thep",
+      },
+      {
+        title: "Ngành nhôm",
+        link: "/bang-tai-nganh-nhom",
+      },
+      {
+        title: "Ngành thể thao",
+        link: "/bang-tai-nganh-the-thao",
+      },
+      {
+        title: "Ngành công nghiệp nặng",
+        link: "/bang-tai-khai-thac-quang",
+      },
+    ],
   },
   {
     title: "Gia Công",
     link: "/machining",
+    children: [
+      {
+        title: "Gia công dán gờ thẳng",
+        link: "/gia-cong-dan-go-thang",
+      },
+      {
+        title: "Gia công dán gân",
+        link: "/gia-cong-dan-gan",
+      },
+      {
+        title: "Gia công dán bèo",
+        link: "/gia-cong-dan-beo",
+      },
+      {
+        title: "Gia công dán đục lỗ",
+        link: "/gia-cong-dan-duc-lo",
+      },
+      {
+        title: "Gia công dán gờ cong",
+        link: "/gia-cong-dan-go-cong",
+      },
+      {
+        title: "Bao biên băng tải",
+        link: "/bao-bien-bang-tai",
+      },
+    ],
   },
   {
     title: "Tin tức",
