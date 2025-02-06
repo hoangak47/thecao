@@ -325,6 +325,7 @@ const News = () => {
                   <App
                     data={editorData}
                     onChange={(data) => setEditorData(data)}
+                    className={"editor-container__editor"}
                   />
                 </div>
 

@@ -209,6 +209,7 @@ const menu = [
 
 export default function Header() {
   const currentPath = usePathname();
+  console.log(currentPath);
   const [open, setOpen] = React.useState(false);
 
   return (
@@ -256,7 +257,8 @@ export default function Header() {
                     href={item.link}
                     className={`nav-link position-relative dropdown-toggle text-nowrap text-lg  text-[#9e9e9e] ${
                       currentPath === item.link ||
-                      currentPath.split("/")[1] === item.nav
+                      currentPath.split("/")[1] === item.nav ||
+                      item.children?.find((child) => child.link === currentPath)
                         ? "active text-black"
                         : ""
                     }`}

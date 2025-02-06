@@ -69,7 +69,7 @@ import "ckeditor5/ckeditor5.css";
 
 import "@/app/admin/style2.css";
 
-export default function App({ data, onChange }) {
+export default function App({ data, onChange, className = "" }) {
   const editorContainerRef = useRef(null);
   const editorRef = useRef(null);
   const [isLayoutReady, setIsLayoutReady] = useState(false);
@@ -234,6 +234,18 @@ export default function App({ data, onChange }) {
           attributes: true,
           classes: true,
         },
+        {
+          name: "figure",
+          styles: true,
+          attributes: true,
+          classes: true,
+        },
+        {
+          name: "img",
+          styles: true,
+          attributes: true,
+          classes: true,
+        },
       ],
     },
     image: {
@@ -332,7 +344,7 @@ export default function App({ data, onChange }) {
           className="editor-container editor-container_classic-editor editor-container_include-style"
           ref={editorContainerRef}
         >
-          <div className="editor-container__editor">
+          <div className={`${className} w-full`}>
             <div ref={editorRef}>
               {isLayoutReady && (
                 <CKEditor
