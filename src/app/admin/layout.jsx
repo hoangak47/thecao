@@ -98,6 +98,7 @@ function LeftSidebar({ isSidebarOpen, toggleSidebar }) {
     { href: "/admin/news", label: "Bài Viết" },
     { href: "/admin/Introduce", label: "Giới thiệu" },
     { href: "/admin/Aviation", label: "Ngành Hàng Không" },
+    { href: "/admin/xichnhua", label: "Xích Nhựa" },
   ];
   return (
     <div

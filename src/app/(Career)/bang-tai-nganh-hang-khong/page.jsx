@@ -8,7 +8,7 @@ import { GetData } from "@/components/getDataProduct/getData";
 import Body from "@/constants/body";
 import { GetDataCareer } from "@/components/getDataProduct/getDataCareer";
 import Partner from "@/components/partners";
-import Aviation from "./aviation";
+import ContenPage from "@/components/contentPage";
 
 export const metadata = {
   title: "Ngành hàng không",
@@ -23,7 +23,7 @@ export default function Page({}) {
     <Layout>
       <SwiperCustom />
       <Body>
-        <Aviation />
+        <ContenPage id={"aviation"} />
 
         <div className="w-full h-[1px] bg-[#000] my-10"></div>
         <GetDataCareer />

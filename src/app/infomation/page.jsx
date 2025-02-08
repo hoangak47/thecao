@@ -16,7 +16,7 @@ import infomation6 from "@/assets/images/infomation (6).jpg";
 import infomation7 from "@/assets/images/infomation (7).jpg";
 import infomation8 from "@/assets/images/infomation (8).jpg";
 import infomation9 from "@/assets/images/infomation (9).jpg";
-import GetInfomation from "./getInfomation";
+import ContenPage from "@/components/contentPage";
 
 const infomation = [
   {
@@ -64,7 +64,7 @@ export default function Infomation() {
         <Image src={com} alt="infomation" className="w-full" />
       </div>
       <Body_>
-        <GetInfomation></GetInfomation>
+        <ContenPage id={"introduce"} />
       </Body_>
 
       <Image src={partners} alt="infomation" className="w-44 flex mx-auto" />
