@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import React from "react";
@@ -14,7 +15,7 @@ import Image from "next/image";
 
 export default function SwiperCustom() {
   return (
-    <section className="w-full h-[500px] p-3">
+    <section className="w-full p-3" style={{ height: "calc(100vh - 110px)" }}>
       <Swiper
         slidesPerView={1}
         spaceBetween={30}
@@ -27,12 +28,17 @@ export default function SwiperCustom() {
         className="mySwiper select-none"
       >
         <SwiperSlide>
-          <Image
-            src={require("@/assets/images/home/slide-1.jpg")}
+          {/* <Image
+            src={require("@/assets/images/home/New folder/slide (1).jpg")}
             alt="Picture of the author"
-            className="w-full h-full"
+            className="w-full h-full object-cover"
             width={500}
             height={500}
+          /> */}
+          <img
+            src="https://i.imgur.com/KBu4qIy.jpeg"
+            alt="Picture of the author"
+            className="w-full h-full object-cover"
           />
 
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center text-white">
@@ -45,39 +51,38 @@ export default function SwiperCustom() {
           </div>
         </SwiperSlide>
         <SwiperSlide>
-          <Image
-            src={require("@/assets/images/home/slide-2.jpg")}
+          <img
+            src="https://i.imgur.com/xnkUFhq.jpeg"
             alt="Picture of the author"
-            className="w-full h-full"
-            width={500}
-            height={500}
+            className="w-full h-full object-cover"
           />
         </SwiperSlide>
         <SwiperSlide>
-          <Image
-            src={require("@/assets/images/home/slide-3.jpg")}
+          <img
+            src="https://i.imgur.com/cpVXdBm.jpeg"
             alt="Picture of the author"
-            className="w-full h-full"
-            width={500}
-            height={500}
+            className="w-full h-full object-cover"
           />
         </SwiperSlide>
         <SwiperSlide>
-          <Image
-            src={require("@/assets/images/home/slide-4.jpg")}
+          <img
+            src="https://i.imgur.com/HPqwu5f.jpeg"
             alt="Picture of the author"
-            className="w-full h-full"
-            width={500}
-            height={500}
+            className="w-full h-full object-cover"
           />
         </SwiperSlide>
         <SwiperSlide>
-          <Image
-            src={require("@/assets/images/home/slide-5.jpg")}
+          <img
+            src="https://i.imgur.com/aQMGEkP.jpeg"
             alt="Picture of the author"
-            className="w-full h-full"
-            width={500}
-            height={500}
+            className="w-full h-full object-cover"
+          />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img
+            src="https://i.imgur.com/7J9fuwf.jpeg"
+            alt="Picture of the author"
+            className="w-full h-full object-cover"
           />
         </SwiperSlide>
       </Swiper>

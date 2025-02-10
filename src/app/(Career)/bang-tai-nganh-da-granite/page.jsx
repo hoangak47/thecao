@@ -7,6 +7,7 @@ import React from "react";
 import Body from "@/constants/body";
 import { GetDataCareer } from "@/components/getDataProduct/getDataCareer";
 import Partner from "@/components/partners";
+import ContenPage from "@/components/contentPage/contentPage";
 
 export const metadata = {
   title: "Ngành đá Granite",
@@ -18,22 +19,7 @@ export default function Page({}) {
     <Layout>
       <SwiperCustom />
       <Body>
-        <>
-          <h1 className="text-4xl font-medium mt-5 text-center m-5 text-[--color-primary]">
-            Ngành đá Granite
-          </h1>
-          <p className="text-justify mt-5">
-            <strong>CÔNG TY THẾ CAO</strong> cung cấp các dòng sản phẩm đai hoàn
-            chỉnh với nhiều hoa văn khác nhau cho các vật liệu như tấm đá cẩm
-            thạch nhân tạo và tổng hợp, gạch men trong ngành chế biến đá và đá
-            cẩm thạch.Các dây đai của thế cao, được ghi nhận là không bị va đập,
-            chống mài mòn và được biết đến với độ bền cao và tuổi thọ dài, được
-            sử dụng trong vận chuyển đá, đánh bóng, mài và các quy trình khác.
-            loại theo áp suất mài, tốc độ và tính chất của các đối tượng được
-            chuyển tải để đảm bảo sản lượng sản xuất ổn định hơn và tốt hơn. Thế
-            cao rất vui khi được hỗ trợ khách hàng lựa chọn đúng
-          </p>
-        </>
+        <ContenPage />
 
         <div className="w-full h-[1px] bg-[#000] my-10"></div>
         <GetDataCareer />

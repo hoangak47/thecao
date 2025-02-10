@@ -96,9 +96,6 @@ function LeftSidebar({ isSidebarOpen, toggleSidebar }) {
     // { href: "#", label: "Truyền Động" },
     // { href: "#", label: "Nẹp" },
     { href: "/admin/news", label: "Tin Tức" },
-    { href: "/admin/Introduce", label: "Giới thiệu" },
-    { href: "/admin/Aviation", label: "Ngành Hàng Không" },
-    { href: "/admin/xichnhua", label: "Xích Nhựa" },
     { href: "/admin/content", label: "Bài Viết" },
   ];
   return (
