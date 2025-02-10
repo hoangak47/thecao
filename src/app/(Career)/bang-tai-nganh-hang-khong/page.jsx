@@ -4,11 +4,10 @@ import SwiperCustom from "@/components/swiper";
 import Layout from "@/constants/layout/layout";
 import React from "react";
 
-import { GetData } from "@/components/getDataProduct/getData";
 import Body from "@/constants/body";
 import { GetDataCareer } from "@/components/getDataProduct/getDataCareer";
 import Partner from "@/components/partners";
-import ContenPage from "@/components/contentPage";
+import ContenPage from "@/components/contentPage/contentPage";
 
 export const metadata = {
   title: "Ngành hàng không",
@@ -23,7 +22,7 @@ export default function Page({}) {
     <Layout>
       <SwiperCustom />
       <Body>
-        <ContenPage id={"aviation"} />
+        <ContenPage />
 
         <div className="w-full h-[1px] bg-[#000] my-10"></div>
         <GetDataCareer />

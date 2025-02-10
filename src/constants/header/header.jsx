@@ -209,7 +209,6 @@ const menu = [
 
 export default function Header() {
   const currentPath = usePathname();
-  console.log(currentPath);
   const [open, setOpen] = React.useState(false);
 
   return (

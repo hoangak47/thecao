@@ -6,7 +6,7 @@ import Layout from "@/constants/layout/layout";
 import React from "react";
 
 import { GetData } from "@/components/getDataProduct/getData";
-import ContenPage from "@/components/contentPage";
+import ContenPage from "@/components/contentPage/contentPage";
 
 export const metadata = {
   title: "Xich nhựa",
@@ -19,7 +19,7 @@ export default function Page({}) {
     <Layout>
       <SwiperCustom />
       <Body_>
-        <ContenPage id={"xichnhua"} />
+        <ContenPage />
 
         <div className="w-full h-[1px] bg-[#000] my-10"></div>
         <GetData />
