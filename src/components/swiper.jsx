@@ -15,7 +15,7 @@ import Image from "next/image";
 
 export default function SwiperCustom() {
   return (
-    <section className="w-full p-3" style={{ height: "calc(100vh - 110px)" }}>
+    <section className="w-full h-[550px] p-3">
       <Swiper
         slidesPerView={1}
         spaceBetween={30}
@@ -28,18 +28,20 @@ export default function SwiperCustom() {
         className="mySwiper select-none"
       >
         <SwiperSlide>
-          {/* <Image
-            src={require("@/assets/images/home/New folder/slide (1).jpg")}
+          <Image
+            src={require("@/assets/images/home/slide (1).jpg")}
             alt="Picture of the author"
             className="w-full h-full object-cover"
             width={500}
             height={500}
-          /> */}
-          <img
+            quality={100}
+            unoptimized
+          />
+          {/* <img
             src="https://i.imgur.com/KBu4qIy.jpeg"
             alt="Picture of the author"
             className="w-full h-full object-cover"
-          />
+          /> */}
 
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center text-white">
             <h1 className="md:text-9xl font-bold text-[#da251c] mb-4 text-5xl">
@@ -51,38 +53,80 @@ export default function SwiperCustom() {
           </div>
         </SwiperSlide>
         <SwiperSlide>
-          <img
-            src="https://i.imgur.com/xnkUFhq.jpeg"
+          <Image
+            src={require("@/assets/images/home/slide (2).jpg")}
             alt="Picture of the author"
             className="w-full h-full object-cover"
+            width={500}
+            height={500}
+            quality={100}
+            unoptimized
           />
         </SwiperSlide>
         <SwiperSlide>
-          <img
-            src="https://i.imgur.com/cpVXdBm.jpeg"
+          <Image
+            src={require("@/assets/images/home/slide (3).jpg")}
             alt="Picture of the author"
             className="w-full h-full object-cover"
+            width={500}
+            height={500}
+            quality={100}
+            unoptimized
           />
         </SwiperSlide>
         <SwiperSlide>
-          <img
-            src="https://i.imgur.com/HPqwu5f.jpeg"
+          <Image
+            src={require("@/assets/images/home/slide (4).jpg")}
             alt="Picture of the author"
             className="w-full h-full object-cover"
+            width={500}
+            height={500}
+            quality={100}
+            unoptimized
           />
         </SwiperSlide>
         <SwiperSlide>
-          <img
-            src="https://i.imgur.com/aQMGEkP.jpeg"
+          <Image
+            src={require("@/assets/images/home/slide (5).jpg")}
             alt="Picture of the author"
             className="w-full h-full object-cover"
+            width={500}
+            height={500}
+            quality={100}
+            unoptimized
           />
         </SwiperSlide>
         <SwiperSlide>
-          <img
-            src="https://i.imgur.com/7J9fuwf.jpeg"
+          <Image
+            src={require("@/assets/images/home/slide (6).jpg")}
             alt="Picture of the author"
             className="w-full h-full object-cover"
+            width={500}
+            height={500}
+            quality={100}
+            unoptimized
+          />
+        </SwiperSlide>
+        <SwiperSlide>
+          <Image
+            src={require("@/assets/images/home/slide (7).jpg")}
+            alt="Picture of the author"
+            className="w-full h-full object-cover"
+            width={500}
+            height={500}
+            quality={100}
+            unoptimized
+          />
+        </SwiperSlide>
+        <SwiperSlide>
+          <Image
+            src={require("@/assets/images/home/slide (8).jpg")}
+            alt="Picture of the author"
+            className="w-full h-full object-cover"
+            width={500}
+            height={500}
+            quality={100}
+            unoptimized
           />
         </SwiperSlide>
       </Swiper>
