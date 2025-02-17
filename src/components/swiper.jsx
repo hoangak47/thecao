@@ -52,7 +52,7 @@ export default function SwiperCustom() {
             </h2>
           </div>
         </SwiperSlide>
-        <SwiperSlide>
+        {/* <SwiperSlide>
           <Image
             src={require("@/assets/images/home/slide (2).jpg")}
             alt="Picture of the author"
@@ -128,7 +128,7 @@ export default function SwiperCustom() {
             quality={100}
             unoptimized
           />
-        </SwiperSlide>
+        </SwiperSlide> */}
       </Swiper>
     </section>
   );

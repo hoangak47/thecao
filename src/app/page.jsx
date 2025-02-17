@@ -23,18 +23,18 @@ const Intro = () => (
       <h2 className="text-center mb-5 text-3xl font-medium">
         CÔNG TY TNHH MTV THẾ CAO
       </h2>
-      <p className={`text-[--color-gray] text-base mb-3`}>
+      <p className={`text-[--color-dark] text-base mb-3`}>
         Công ty THẾ CAO luôn đi song song giữa chất lượng và số lượng có kiểm
-        định quốc tế và đội ngũ nhân viên lâu năm với hơn 10 năm trong nghề cùng
+        định quốc tế và đội ngũ nhân viên lâu năm với hơn 25 năm trong nghề cùng
         với máy móc trang thiết bị tân tiến, luôn luôn cập nhật thiết bị và mẫu
         mã mới để phù hợp với từng nhu cầu của khách hàng...
       </p>
-      <p className={`text-[--color-gray] text-base mb-3`}>
+      <p className={`text-[--color-dark] text-base mb-3`}>
         Công ty chúng tôi luôn nỗ lực phấn đấu để trở thành “Nhà cung cấp chuyên
         nghiệp về các mẫu mã mới của băng tải và dây đai truyền động” cho quý
         khách hàng.
       </p>
-      <p className={`text-[--color-gray] text-base mb-3`}>
+      <p className={`text-[--color-dark] text-base mb-3`}>
         Đến với Thế Cao, Quý khách hàng sẽ được tư vấn giải pháp tốt nhất, hiệu
         quả nhất cho nhu cầu băng tải của quý khách hàng.
       </p>
@@ -113,7 +113,7 @@ export const products = [
   },
   {
     img: XichNhua,
-    title: "Băng tải xích nhựa HONG'S BELT",
+    title: "Băng tải xích nhựa",
     url: "/XichNhua",
   },
   {
