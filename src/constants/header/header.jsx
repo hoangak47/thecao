@@ -218,7 +218,7 @@ export default function Header() {
           <Image
             src={require("@/assets/images/logo.png")}
             alt="The Cao"
-            width={200}
+            width={300}
           />
         </a>
         <div
