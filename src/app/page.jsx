@@ -151,7 +151,7 @@ const Products = () => (
             height={500}
           />
           <div className="flex items-center justify-center flex-1 mt-3">
-            <h2 className="text-center text-2xl font-medium mt-1 line-clamp-2">
+            <h2 className="text-center text-xl font-medium mt-1 line-clamp-2">
               {product.title}
             </h2>
           </div>
