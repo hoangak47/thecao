@@ -35,7 +35,6 @@ export default function SwiperCustom() {
             width={500}
             height={500}
             quality={100}
-            unoptimized
           />
           {/* <img
             src="https://i.imgur.com/KBu4qIy.jpeg"
