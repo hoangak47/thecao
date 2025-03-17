@@ -95,13 +95,7 @@ export default function Dropdown({ selected, setSelected, className = "" }) {
   }, []);
 
   return (
-    <div className={className + " w-64 mx-auto mt-10"}>
-      <label
-        htmlFor="dropdown"
-        className="block mb-2 text-sm font-medium text-gray-900"
-      >
-        Chọn danh mục
-      </label>
+    <div className={className + " w-64 mx-auto"}>
       <select
         id="dropdown"
         value={selected}
