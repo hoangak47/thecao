@@ -184,13 +184,13 @@ const menu = [
         link: "/gia-cong-dan-beo",
       },
       {
-        title: "Gia công dán đục lỗ",
+        title: "Gia công đục lỗ",
         link: "/gia-cong-dan-duc-lo",
       },
-      {
-        title: "Gia công dán gờ cong",
-        link: "/gia-cong-dan-go-cong",
-      },
+      // {
+      //   title: "Gia công dán gờ cong",
+      //   link: "/gia-cong-dan-go-cong",
+      // },
       {
         title: "Bao biên băng tải",
         link: "/bao-bien-bang-tai",
