@@ -27,6 +27,7 @@ import flexco from "@/assets/images/flexco.png";
 import hongbelt from "@/assets/images/hong'sbelt.webp";
 import reoclearn from "@/assets/images/reoclean.png";
 import hairise from "@/assets/images/hairise.jpg";
+import shiseido from "@/assets/images/shiseido.jpg";
 
 import Image from "next/image";
 import useWindowSize from "@/hooks/useWindowSize";
@@ -95,6 +96,10 @@ const partners = [
     img: hairise,
     title: "Hairise",
   },
+  {
+    img: shiseido,
+    title: "Shiseido",
+  },
 ];
 
 export default function Partner({
@@ -114,7 +119,7 @@ export default function Partner({
           slidesPerView
             ? slidesPerView
             : width > 768
-              ? 6
+              ? 5
               : width > 640
                 ? 4
                 : width > 480
