@@ -28,6 +28,10 @@ import hongbelt from "@/assets/images/hong'sbelt.webp";
 import reoclearn from "@/assets/images/reoclean.png";
 import hairise from "@/assets/images/hairise.jpg";
 import shiseido from "@/assets/images/shiseido.jpg";
+import sailun from "@/assets/images/sailun.jfif";
+import namduong from "@/assets/images/namduong.jfif";
+import vifon from "@/assets/images/vifon.jfif";
+import cholimex from "@/assets/images/cholimex.jfif";
 
 import Image from "next/image";
 import useWindowSize from "@/hooks/useWindowSize";
@@ -60,6 +64,26 @@ const customer = [
   {
     img: kenda,
     title: "Kenda",
+  },
+  {
+    img: shiseido,
+    title: "Shiseido",
+  },
+  {
+    img: sailun,
+    title: "Sailun",
+  },
+  {
+    img: namduong,
+    title: "Namduong",
+  },
+  {
+    img: vifon,
+    title: "Vifon",
+  },
+  {
+    img: cholimex,
+    title: "Cholimex",
   },
 ];
 
@@ -95,10 +119,6 @@ const partners = [
   {
     img: hairise,
     title: "Hairise",
-  },
-  {
-    img: shiseido,
-    title: "Shiseido",
   },
 ];
 
