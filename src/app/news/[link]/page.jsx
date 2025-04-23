@@ -5,6 +5,8 @@ import Partner from "@/components/partners";
 import SwiperCustom from "@/components/swiper";
 import Body_ from "@/constants/body/body2";
 import Layout from "@/constants/layout/layout";
+import "./page.css";
+
 import { setPosts } from "@/lib/features/posts";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { findPostByLink, getData } from "@/services";
@@ -48,7 +50,7 @@ export default function Page() {
       <SwiperCustom />
       <Body_>
         <div className="content">
-          <h1>{post?.title}</h1>
+          <h1 className="header_content">{post?.title}</h1>
           <div dangerouslySetInnerHTML={{ __html: post?.content }} />
         </div>
       </Body_>
