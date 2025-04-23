@@ -28,10 +28,10 @@ import hongbelt from "@/assets/images/hong'sbelt.webp";
 import reoclearn from "@/assets/images/reoclean.png";
 import hairise from "@/assets/images/hairise.jpg";
 import shiseido from "@/assets/images/shiseido.jpg";
-import sailun from "@/assets/images/sailun.jfif";
-import namduong from "@/assets/images/namduong.jfif";
-import vifon from "@/assets/images/vifon.jfif";
-import cholimex from "@/assets/images/cholimex.jfif";
+import sailun from "@/assets/images/sailun.jpg";
+import namduong from "@/assets/images/namduong.jpg";
+import vifon from "@/assets/images/vifon.jpg";
+import cholimex from "@/assets/images/cholimex.jpg";
 
 import Image from "next/image";
 import useWindowSize from "@/hooks/useWindowSize";
