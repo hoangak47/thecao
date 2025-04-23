@@ -47,7 +47,7 @@ export default function Page() {
     <Layout>
       <SwiperCustom />
       <Body_>
-        <div className="default">
+        <div className="content">
           <h1>{post?.title}</h1>
           <div dangerouslySetInnerHTML={{ __html: post?.content }} />
         </div>
