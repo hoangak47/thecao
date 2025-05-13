@@ -30,9 +30,9 @@ export default function Content({}) {
   return (
     <LayoutAdmin>
       <div className="container mx-auto p-4 max-w-7xl h-full overflow-y-auto pb-32 relative">
-        <div class="flex mb-4 sticky top-0 left-0 right-0 bg-white p-4 rounded shadow-md z-10">
+        <div className="flex mb-4 sticky top-0 left-0 right-0 bg-white p-4 rounded shadow-md z-10">
           <button
-            class="bg-red-500 text-white px-4 py-2 rounded mr-2"
+            className="bg-red-500 text-white px-4 py-2 rounded mr-2"
             onClick={handleSubmit}
           >
             Lưu

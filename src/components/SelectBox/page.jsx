@@ -26,6 +26,7 @@ export default function Dropdown({ selected, setSelected, className = "" }) {
             { value: "PURang", label: "PU Răng" },
             { value: "DayTruyenDong", label: "Truyền Động" },
             { value: "dinhFlexco", label: "Nẹp" },
+            { value: "BangTaiNi", label: "Băng Tải Nỉ" },
           ],
         },
         {

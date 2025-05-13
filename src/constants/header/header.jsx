@@ -103,6 +103,10 @@ const menu = [
         title: "Nẹp FLexco",
         link: "/dinhFlexco",
       },
+      {
+        title: "Băng tải Nỉ",
+        link: "/BangTaiNi",
+      },
     ],
   },
   {

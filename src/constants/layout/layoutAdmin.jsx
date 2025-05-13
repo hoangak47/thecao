@@ -75,9 +75,9 @@ export default function LayoutAdmin({ children }) {
               <span className="mr-2">Xin chào: Administrator</span>
               <i className="fas fa-banana"></i>
             </div>
-            <div class="flex items-center">
-              <a href="/" target="_blank" class="text-gray-600">
-                <i class="fas fa-home text-red-500 text-2xl"></i>
+            <div className="flex items-center">
+              <a href="/" target="_blank" className="text-gray-600">
+                <i className="fas fa-home text-red-500 text-2xl"></i>
               </a>
             </div>
           </div>

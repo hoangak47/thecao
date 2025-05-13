@@ -30,7 +30,7 @@ export function GetData() {
           const imageSrc = item.img.startsWith("https")
             ? item.img
             : require(
-                `@/assets/images/${id === "PU" || id === "TPU" ? "PVC" : id}/${item.img.split("/")[4]}`
+                `@/assets/images/${id === "PU" || id === "TPU" || id === "BangTaiNi" ? "PVC" : id}/${item.img.split("/")[4]}`
               );
 
           return (
