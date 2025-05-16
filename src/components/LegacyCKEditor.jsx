@@ -1,23 +1,33 @@
-"use client";
+import { useEffect, useRef } from "react";
 
-import { useEffect } from "react";
+export default function Editor({ data = "", onChange }) {
+  const editorRef = useRef(null);
 
-export default function Editor() {
   useEffect(() => {
     const loadScripts = async () => {
       const ckeditorScript = document.createElement("script");
-      ckeditorScript.src = "/ckeditor/ckeditor.js";
+      ckeditorScript.src = "https://hoangak47.github.io/ckeditor/ckeditor.js";
       ckeditorScript.onload = () => {
-        if (window.CKEDITOR) {
+        if (window.CKEDITOR && !window.CKEDITOR.instances.editor1) {
           const editor = window.CKEDITOR.replace("editor1", {
             filebrowserUploadUrl: "/api/upload",
             filebrowserUploadMethod: "form",
-            filebrowserImageUploadUrl: "/api/upload", // Đường upload ảnh
+            filebrowserImageUploadUrl: "/api/upload",
             removeDialogTabs: "link:upload;image:Upload",
           });
+          editorRef.current = editor;
 
           editor.on("instanceReady", () => {
-            // 🛠️ Khi editor đã sẵn sàng, thêm nút "Tải ảnh lên nhanh"
+            if (data) {
+              editor.setData(data);
+            }
+            if (onChange) {
+              editor.on("change", function () {
+                const content = editor.getData();
+                onChange(content);
+              });
+            }
+
             const uploadButton = document.createElement("button");
             uploadButton.textContent = "📤 Tải ảnh lên nhanh";
             uploadButton.style.marginBottom = "10px";
@@ -47,7 +57,6 @@ export default function Editor() {
 
                 const data = await res.json();
                 if (data && data.url) {
-                  // 👉 Sau khi upload xong, chèn ảnh luôn vào nội dung
                   editor.insertHtml(
                     `<img src="${data.url}" alt="Uploaded Image" style="max-width:100%;" />`
                   );
@@ -59,7 +68,6 @@ export default function Editor() {
               input.click();
             };
 
-            // ✅ Thêm nút vào đúng chỗ
             const editorContainer =
               document.getElementById("editor1").parentElement;
             editorContainer.insertBefore(
@@ -71,9 +79,14 @@ export default function Editor() {
       };
       document.body.appendChild(ckeditorScript);
     };
-
     loadScripts();
   }, []);
+
+  useEffect(() => {
+    if (editorRef.current && data !== editorRef.current.getData()) {
+      editorRef.current.setData(data);
+    }
+  }, [data]);
 
   return (
     <div>

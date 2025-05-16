@@ -1,28 +1,36 @@
 "use client";
 import React from "react";
 import dynamic from "next/dynamic";
-const App = dynamic(() => import("@/components/CkeditorComponent2"), {
+const LegacyCKEditor = dynamic(() => import("@/components/LegacyCKEditor"), {
   ssr: false,
 });
-
 import { addData, getData } from "@/services";
 import Dropdown from "@/components/SelectBox/page";
 import LayoutAdmin from "@/constants/layout/layoutAdmin";
+
 export default function Content({}) {
   const [editorData, setEditorData] = React.useState("");
   const [selected, setSelected] = React.useState("");
+
   React.useEffect(() => {
     if (!selected) return;
-    getData("content/" + selected).then((data) => {
-      setEditorData(data?.content || "");
-    });
+    getData("content/" + selected)
+      .then((data) => {
+        setEditorData(data?.content || "");
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+        setEditorData("");
+      });
   }, [selected]);
 
   const handleSubmit = async () => {
     try {
+      // console.log("editorData:", editorData);
       await addData("content/" + selected, { content: editorData });
       alert("Đã lưu");
     } catch (error) {
+      console.error("Error saving data:", error);
       alert("Lỗi");
     }
   };
@@ -43,7 +51,12 @@ export default function Content({}) {
             className=""
           />
         </div>
-        <App data={editorData} onChange={(data) => setEditorData(data)} />
+        <LegacyCKEditor
+          data={editorData}
+          onChange={(data) => {
+            setEditorData(data);
+          }}
+        />
       </div>
     </LayoutAdmin>
   );
