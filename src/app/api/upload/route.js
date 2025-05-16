@@ -2,11 +2,8 @@ import fs from "fs/promises";
 import path from "path";
 import { NextResponse } from "next/server";
 
-export const config = {
-  api: {
-    bodyParser: false,
-  },
-};
+// Không cần export const config nữa
+// Next.js tự động xử lý formData với POST request
 
 export async function POST(req) {
   const uploadDir = path.join(process.cwd(), "public/uploads");
@@ -44,3 +41,5 @@ export async function POST(req) {
     url: fileUrl,
   });
 }
+
+export const runtime = "nodejs"; // Thêm runtime để đảm bảo chạy trên Node.js
